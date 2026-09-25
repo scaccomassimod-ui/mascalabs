@@ -169,42 +169,97 @@
             color: var(--text);
         }
 
-        .color-button {
-            width: 110px;
-            height: 36px;
 
+        /* =========================================================
+           COLOR BUTTON
+        ========================================================= */
+
+        .color-button {
+            /* DIMENSIONI FISSE */
+            width: 110px;
+            min-width: 110px;
+            max-width: 110px;
+
+            height: 36px;
+            min-height: 36px;
+            max-height: 36px;
+
+            /* LAYOUT INTERNO */
             display: inline-flex;
             align-items: center;
             justify-content: center;
 
+            /* ASPETTO */
+            appearance: none;
+            -webkit-appearance: none;
+
             border: 1px solid var(--accent);
 
             background: var(--accent-soft);
-            color: var(--text);
+
+            color: var(--accent);
 
             padding: 0;
 
+            margin: 0;
+
             border-radius: 999px;
+
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Helvetica,
+                Arial,
+                sans-serif;
 
             font-size: 12px;
             font-weight: 650;
+
+            line-height: 1;
 
             cursor: pointer;
 
             white-space: nowrap;
 
+            overflow: hidden;
+
+            flex-shrink: 0;
+
+            /* NESSUN CAMBIAMENTO DI DIMENSIONE */
+            transform: translateY(0);
+
             transition:
                 background .2s ease,
-                transform .2s ease,
-                box-shadow .2s ease;
+                border-color .2s ease,
+                color .2s ease,
+                box-shadow .2s ease,
+                transform .2s ease;
+        }
+
+        /* Il colore rimane SEMPRE visibile */
+        .color-button,
+        .color-button:hover,
+        .color-button:focus,
+        .color-button:active {
+            border-color: var(--accent);
+            background: var(--accent-soft);
+            color: var(--accent);
         }
 
         .color-button:hover {
-            background: var(--accent-soft);
-
             box-shadow: 0 0 12px var(--accent-soft);
 
             transform: translateY(-1px);
+        }
+
+        .color-button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .color-button:active {
+            transform: translateY(0);
         }
 
 
@@ -631,13 +686,6 @@
             letter-spacing: -2px;
         }
 
-        /*
-           MASCA nel blocco "Lo studio".
-
-           Rimane grande, ma il sottotitolo è
-           indipendente dalla dimensione di MASCA.
-        */
-
         .studio-logo {
             display: block;
 
@@ -981,9 +1029,7 @@
 
 
                     <h3>
-
                         StudiMedici<span class="accent">.online</span>
-
                     </h3>
 
 
@@ -1312,10 +1358,8 @@
                 </div>
 
                 <h2 class="section-title">
-
                     I prossimi<br>
                     prodotti.
-
                 </h2>
 
             </div>
@@ -1543,7 +1587,7 @@
                     font-size: 15px;
                     font-weight: 650;
                 ">
-                    Fondatore ·  Medico  ·  Ingegnere
+                    Fondatore · Medico · Ingegnere
                 </p>
 
             </div>
@@ -1551,7 +1595,7 @@
 
             <p class="about-text">
 
-                Sono Massimo Scacco, medico di medicina generale e laureato in ingegneria della produzione industriale .
+                Sono Massimo Scacco, medico di medicina generale e laureato in ingegneria della produzione industriale.
 
                 <br><br>
 
@@ -1710,22 +1754,43 @@
 
     function applyColor() {
 
+        const currentAccent =
+            colors[currentColor];
+
+        const currentAccentSoft =
+            hexToRgba(
+                currentAccent,
+                0.10
+            );
+
+
+        /* Colore principale */
         document.documentElement.style.setProperty(
             "--accent",
-            colors[currentColor]
+            currentAccent
         );
 
 
+        /* Sfondo trasparente */
         document.documentElement.style.setProperty(
             "--accent-soft",
-            hexToRgba(
-                colors[currentColor],
-                0.10
-            )
+            currentAccentSoft
         );
 
 
-        button.innerHTML =
+        /* Aggiorna esplicitamente il bottone */
+        button.style.borderColor =
+            currentAccent;
+
+        button.style.backgroundColor =
+            currentAccentSoft;
+
+        button.style.color =
+            currentAccent;
+
+
+        /* Testo del bottone */
+        button.textContent =
             "● " +
             colorNames[currentColor];
 
