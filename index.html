@@ -125,7 +125,7 @@
         }
 
         .nav {
-            height: 76px;
+            height: 70px;
 
             display: flex;
             align-items: center;
@@ -134,6 +134,7 @@
 
         .logo {
             font-family: "Exo 2", sans-serif;
+
             font-size: 1.15rem;
             font-weight: 800;
 
@@ -175,91 +176,47 @@
         ========================================================= */
 
         .color-button {
-            /* DIMENSIONI FISSE */
             width: 110px;
-            min-width: 110px;
-            max-width: 110px;
-
             height: 36px;
-            min-height: 36px;
-            max-height: 36px;
 
-            /* LAYOUT INTERNO */
             display: inline-flex;
             align-items: center;
             justify-content: center;
 
-            /* ASPETTO */
-            appearance: none;
-            -webkit-appearance: none;
+            flex: 0 0 110px;
 
             border: 1px solid var(--accent);
 
             background: var(--accent-soft);
 
-            color: var(--accent);
+            color: var(--text);
 
             padding: 0;
 
-            margin: 0;
-
             border-radius: 999px;
-
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                Helvetica,
-                Arial,
-                sans-serif;
 
             font-size: 12px;
             font-weight: 650;
-
-            line-height: 1;
 
             cursor: pointer;
 
             white-space: nowrap;
 
-            overflow: hidden;
-
-            flex-shrink: 0;
-
-            /* NESSUN CAMBIAMENTO DI DIMENSIONE */
-            transform: translateY(0);
-
             transition:
                 background .2s ease,
-                border-color .2s ease,
-                color .2s ease,
+                transform .2s ease,
                 box-shadow .2s ease,
-                transform .2s ease;
-        }
-
-        /* Il colore rimane SEMPRE visibile */
-        .color-button,
-        .color-button:hover,
-        .color-button:focus,
-        .color-button:active {
-            border-color: var(--accent);
-            background: var(--accent-soft);
-            color: var(--accent);
+                border-color .2s ease;
         }
 
         .color-button:hover {
+            background: var(--accent-soft);
+
+            border-color: var(--accent);
+
             box-shadow: 0 0 12px var(--accent-soft);
 
             transform: translateY(-1px);
-        }
-
-        .color-button:focus-visible {
-            outline: 2px solid var(--accent);
-            outline-offset: 3px;
-        }
-
-        .color-button:active {
-            transform: translateY(0);
         }
 
 
@@ -268,7 +225,7 @@
         ========================================================= */
 
         .hero {
-            min-height: 82vh;
+            min-height: calc(100vh - 70px);
 
             display: flex;
             align-items: center;
@@ -300,7 +257,7 @@
         }
 
         .hero-content {
-            padding: 110px 0 130px;
+            padding: 55px 0 65px;
 
             position: relative;
             z-index: 1;
@@ -316,7 +273,7 @@
             font-size: 13px;
             font-weight: 600;
 
-            margin-bottom: 30px;
+            margin-bottom: 24px;
         }
 
         .eyebrow-dot {
@@ -331,11 +288,11 @@
         }
 
         .hero h1 {
-            font-size: clamp(58px, 9vw, 118px);
+            font-size: clamp(54px, 7.5vw, 100px);
 
             line-height: .88;
 
-            letter-spacing: -7px;
+            letter-spacing: -6px;
 
             max-width: 1050px;
         }
@@ -349,17 +306,17 @@
         .hero-description {
             max-width: 620px;
 
-            margin-top: 42px;
+            margin-top: 30px;
 
-            font-size: clamp(18px, 2vw, 22px);
+            font-size: clamp(17px, 1.7vw, 21px);
 
-            line-height: 1.5;
+            line-height: 1.45;
 
             color: var(--muted);
         }
 
         .hero-bottom {
-            margin-top: 48px;
+            margin-top: 30px;
 
             display: flex;
             align-items: center;
@@ -378,7 +335,7 @@
             background: var(--text);
             color: #000;
 
-            padding: 13px 19px;
+            padding: 12px 18px;
 
             border-radius: 8px;
 
@@ -691,7 +648,7 @@
 
             font-family: "Exo 2", sans-serif;
 
-            font-size: clamp(42px, 6vw, 76px);
+            font-size: clamp(38px, 5vw, 64px);
 
             font-weight: 800;
 
@@ -797,12 +754,28 @@
                 display: none;
             }
 
+            .hero {
+                min-height: calc(100vh - 68px);
+            }
+
             .hero-content {
-                padding: 90px 0 100px;
+                padding: 55px 0 60px;
             }
 
             .hero h1 {
+                font-size: clamp(52px, 14vw, 78px);
+
                 letter-spacing: -4px;
+            }
+
+            .hero-description {
+                margin-top: 28px;
+
+                font-size: 18px;
+            }
+
+            .hero-bottom {
+                margin-top: 28px;
             }
 
             section {
@@ -904,7 +877,7 @@
                 id="colorButton"
                 type="button"
             >
-                ● Color mode
+                ● Lime
             </button>
 
         </div>
@@ -1297,6 +1270,122 @@
                             06
                         </span>
 
+                        <span class="status live">
+                            Online
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        AI Impact Meter
+                    </h3>
+
+
+                    <p>
+
+                        Un'estensione per Google Chrome che permette
+                        di monitorare e analizzare l'utilizzo
+                        dell'intelligenza artificiale durante la
+                        navigazione e il lavoro online.
+
+                    </p>
+
+                </div>
+
+
+                <div class="project-footer">
+
+                    <span class="tags">
+                        AI · Chrome Extension · Analytics · 2026
+                    </span>
+
+
+                    <a
+                        href="https://chromewebstore.google.com/detail/ai-impact-meter/lpjpcagblfjejcajdjamminmoeknmfcd"
+                        target="_blank"
+                        rel="noopener"
+                        class="project-link"
+                    >
+                        Chrome Web Store →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PROJECT 07 -->
+
+            <article class="project">
+
+                <div>
+
+                    <div class="project-top">
+
+                        <span class="project-number">
+                            07
+                        </span>
+
+                        <span class="status live">
+                            Online
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        Notion Templates
+                    </h3>
+
+
+                    <p>
+
+                        Una raccolta di template per Notion che ho
+                        progettato per organizzare studio, lavoro,
+                        finanze e attività quotidiane attraverso
+                        sistemi semplici e personalizzabili.
+
+                    </p>
+
+                </div>
+
+
+                <div class="project-footer">
+
+                    <span class="tags">
+                        Notion · Productivity · Templates · 2026
+                    </span>
+
+
+                    <a
+                        href="https://www.notion.com/@massimo"
+                        target="_blank"
+                        rel="noopener"
+                        class="project-link"
+                    >
+                        Vai ai template →
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- PROJECT 08 -->
+
+            <article class="project">
+
+                <div>
+
+                    <div class="project-top">
+
+                        <span class="project-number">
+                            08
+                        </span>
+
                         <span class="status">
                             Presto online
                         </span>
@@ -1332,122 +1421,12 @@
 
             </article>
 
-<!-- PROJECT 06 -->
 
-<article class="project">
-
-    <div>
-
-        <div class="project-top">
-
-            <span class="project-number">
-                06
-            </span>
-
-            <span class="status live">
-                Online
-            </span>
-
-        </div>
-
-
-        <h3>
-            AI Impact Meter
-        </h3>
-
-
-        <p>
-
-            Un'estensione per Google Chrome che permette di
-            monitorare e analizzare l'utilizzo dell'intelligenza
-            artificiale durante la navigazione e il lavoro online.
-
-        </p>
-
-    </div>
-
-
-    <div class="project-footer">
-
-        <span class="tags">
-            AI · Chrome Extension · Analytics · 2026
-        </span>
-
-
-        <a
-            href="https://chromewebstore.google.com/detail/ai-impact-meter/lpjpcagblfjejcajdjamminmoeknmfcd"
-            target="_blank"
-            rel="noopener"
-            class="project-link"
-        >
-            Chrome Web Store →
-        </a>
-
-    </div>
-
-</article>
-
-<!-- PROJECT 07 -->
-
-<article class="project">
-
-    <div>
-
-        <div class="project-top">
-
-            <span class="project-number">
-                07
-            </span>
-
-            <span class="status live">
-                Online
-            </span>
-
-        </div>
-
-
-        <h3>
-            Notion Templates
-        </h3>
-
-
-        <p>
-
-            Una raccolta di template per Notion che ho progettato
-            per organizzare studio, lavoro, finanze e attività
-            quotidiane attraverso sistemi semplici e personalizzabili.
-
-        </p>
-
-    </div>
-
-
-    <div class="project-footer">
-
-        <span class="tags">
-            Notion · Productivity · Templates · 2026
-        </span>
-
-
-        <a
-            href="https://www.notion.com/@massimo"
-            target="_blank"
-            rel="noopener"
-            class="project-link"
-        >
-            Vai ai template →
-        </a>
-
-    </div>
-
-</article>
         </div>
 
     </div>
 
 </section>
-
-
 
 
 
@@ -1488,14 +1467,11 @@
         <div class="development-list">
 
 
-            <!-- 01 -->
-
             <div class="development-item">
 
                 <div class="development-number">
                     01
                 </div>
-
 
                 <div>
 
@@ -1515,7 +1491,6 @@
 
                 </div>
 
-
                 <div class="development-status">
                     In sviluppo
                 </div>
@@ -1524,14 +1499,11 @@
 
 
 
-            <!-- 02 -->
-
             <div class="development-item">
 
                 <div class="development-number">
                     02
                 </div>
-
 
                 <div>
 
@@ -1551,7 +1523,6 @@
 
                 </div>
 
-
                 <div class="development-status">
                     In sviluppo
                 </div>
@@ -1560,19 +1531,16 @@
 
 
 
-            <!-- 03 -->
-
             <div class="development-item">
 
                 <div class="development-number">
                     03
                 </div>
 
-
                 <div>
 
                     <h3>
-                        Rooki
+                        Rookie
                     </h3>
 
                     <p>
@@ -1588,7 +1556,6 @@
                     </p>
 
                 </div>
-
 
                 <div class="development-status">
                     In sviluppo
@@ -1705,7 +1672,8 @@
 
             <p class="about-text">
 
-                Sono Massimo Scacco, medico di medicina generale e laureato in ingegneria della produzione industriale.
+                Sono Massimo Scacco, medico di medicina generale
+                e laureato in ingegneria della produzione industriale.
 
                 <br><br>
 
@@ -1788,16 +1756,16 @@
 
     const colors = [
 
-        "#c8ff00", // Lime
-        "#00d9ff", // Cyan
-        "#ff7a00", // Orange
-        "#b76cff", // Purple
-        "#ff4f9a", // Pink
-        "#4d8dff", // Blue
-        "#ff4d4d", // Red
-        "#ffe14d", // Yellow
-        "#35d07f", // Green
-        "#ff4fd8"  // Magenta
+        "#c8ff00",
+        "#00d9ff",
+        "#ff7a00",
+        "#b76cff",
+        "#ff4f9a",
+        "#4d8dff",
+        "#ff4d4d",
+        "#ffe14d",
+        "#35d07f",
+        "#ff4fd8"
 
     ];
 
@@ -1864,43 +1832,23 @@
 
     function applyColor() {
 
-        const currentAccent =
+        const color =
             colors[currentColor];
 
-        const currentAccentSoft =
-            hexToRgba(
-                currentAccent,
-                0.10
-            );
 
-
-        /* Colore principale */
         document.documentElement.style.setProperty(
             "--accent",
-            currentAccent
+            color
         );
 
 
-        /* Sfondo trasparente */
         document.documentElement.style.setProperty(
             "--accent-soft",
-            currentAccentSoft
+            hexToRgba(color, 0.10)
         );
 
 
-        /* Aggiorna esplicitamente il bottone */
-        button.style.borderColor =
-            currentAccent;
-
-        button.style.backgroundColor =
-            currentAccentSoft;
-
-        button.style.color =
-            currentAccent;
-
-
-        /* Testo del bottone */
-        button.textContent =
+        button.innerHTML =
             "● " +
             colorNames[currentColor];
 
@@ -1914,8 +1862,7 @@
             currentColor++;
 
             if (
-                currentColor >=
-                colors.length
+                currentColor >= colors.length
             ) {
                 currentColor = 0;
             }
