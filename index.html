@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="icon" type="image/png" href="favicon.png">
 
     <title>MASCA — Software, AI & Prodotti digitali</title>
 
@@ -13,28 +13,49 @@
         content="MASCA — Software, SaaS, intelligenza artificiale e prodotti digitali sviluppati da Massimo Scacco."
     >
 
+    <!-- FAVICON -->
+    <link
+        rel="icon"
+        type="image/png"
+        href="favicon.png"
+    >
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Exo+2:wght@800&display=swap"
         rel="stylesheet"
     >
 
+
     <style>
+
+        /* =========================================================
+           VARIABLES
+        ========================================================= */
 
         :root {
             --bg: #080808;
             --surface: #101010;
             --surface-2: #151515;
+
             --text: #f4f4f4;
             --muted: #969696;
+
             --border: #252525;
 
             --accent: #c8ff00;
-            --accent-soft: rgba(200,255,0,.10);
-            --accent-medium: rgba(200,255,0,.20);
+            --accent-soft: rgba(200, 255, 0, 0.10);
+
+            --max: 1180px;
         }
+
+
+        /* =========================================================
+           RESET
+        ========================================================= */
 
         * {
             box-sizing: border-box;
@@ -47,11 +68,25 @@
         }
 
         body {
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Helvetica,
+                Arial,
+                sans-serif;
+
             background: var(--bg);
             color: var(--text);
-            font-family: Arial, Helvetica, sans-serif;
+
             line-height: 1.6;
+
             overflow-x: hidden;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: #000;
         }
 
         a {
@@ -59,54 +94,66 @@
             text-decoration: none;
         }
 
-        button {
-            font-family: inherit;
-        }
-
         .container {
-            width: min(1180px, calc(100% - 48px));
+            width: min(var(--max), 90%);
             margin: 0 auto;
         }
 
-        /* =========================
+
+        /* =========================================================
+           MASCA LOGO
+        ========================================================= */
+
+        .masca-logo {
+            font-family: "Exo 2", sans-serif;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+            color: var(--text);
+        }
+
+        .masca-logo .code {
+            color: var(--accent);
+            transition: color .3s ease;
+        }
+
+
+        /* =========================================================
            HEADER
-        ========================= */
+        ========================================================= */
 
         header {
             position: sticky;
             top: 0;
             z-index: 100;
 
-            background: rgba(8,8,8,.88);
+            background: rgba(8, 8, 8, 0.82);
+            backdrop-filter: blur(16px);
 
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-
-            border-bottom: 1px solid rgba(255,255,255,.06);
+            border-bottom: 1px solid var(--border);
         }
 
-        .header-inner {
-            min-height: 76px;
+        .nav {
+            height: 76px;
 
             display: flex;
             align-items: center;
             justify-content: space-between;
-
-            gap: 30px;
         }
 
         .logo {
             font-family: "Exo 2", sans-serif;
-            font-size: 25px;
+
+            font-size: 1.15rem;
             font-weight: 800;
-            letter-spacing: -1.5px;
-            white-space: nowrap;
+
+            letter-spacing: 0.02em;
+
+            color: var(--text);
         }
 
-        .logo .code,
-        .studio-logo .code,
-        .footer-brand .code {
+        .logo .code {
             color: var(--accent);
+            transition: color .3s ease;
         }
 
         .nav-right {
@@ -117,14 +164,13 @@
 
         .nav-links {
             display: flex;
-            align-items: center;
-            gap: 26px;
+            gap: 28px;
+
+            color: var(--muted);
+            font-size: 14px;
         }
 
         .nav-links a {
-            color: var(--muted);
-            font-size: 13px;
-            font-weight: 600;
             transition: color .2s ease;
         }
 
@@ -132,109 +178,10 @@
             color: var(--text);
         }
 
-        /* =========================
-           LANGUAGE
-        ========================= */
 
-        .language-wrap {
-            position: relative;
-            flex-shrink: 0;
-        }
-
-        .language-button {
-            width: 58px;
-            height: 36px;
-
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-
-            border: 1px solid var(--accent);
-            background: var(--accent-soft);
-            color: var(--text);
-
-            border-radius: 999px;
-
-            padding: 0;
-
-            font-size: 12px;
-            font-weight: 700;
-
-            cursor: pointer;
-            white-space: nowrap;
-
-            transition:
-                background .2s ease,
-                transform .2s ease,
-                box-shadow .2s ease;
-        }
-
-        .language-button:hover,
-        .language-button:focus-visible {
-            background: var(--accent-soft);
-            border-color: var(--accent);
-            box-shadow: 0 0 12px var(--accent-soft);
-            transform: translateY(-1px);
-            outline: none;
-        }
-
-        .language-menu {
-            position: absolute;
-
-            right: 0;
-            top: calc(100% + 9px);
-
-            width: 150px;
-
-            padding: 6px;
-
-            background: #101010;
-
-            border: 1px solid var(--border);
-            border-radius: 12px;
-
-            box-shadow: 0 18px 50px rgba(0,0,0,.45);
-
-            display: none;
-        }
-
-        .language-wrap.open .language-menu {
-            display: grid;
-        }
-
-        .language-menu button {
-            width: 100%;
-
-            border: 0;
-            background: transparent;
-
-            color: var(--muted);
-
-            text-align: left;
-
-            padding: 10px 11px;
-
-            border-radius: 8px;
-
-            cursor: pointer;
-
-            font-size: 12px;
-            font-weight: 600;
-
-            transition:
-                background .2s ease,
-                color .2s ease;
-        }
-
-        .language-menu button:hover,
-        .language-menu button.active {
-            background: var(--accent-soft);
-            color: var(--text);
-        }
-
-        /* =========================
-           COLOR MODE
-        ========================= */
+        /* =========================================================
+           COLOR BUTTON
+        ========================================================= */
 
         .color-button {
             width: 110px;
@@ -247,6 +194,7 @@
             flex-shrink: 0;
 
             border: 1px solid var(--accent);
+
             background: var(--accent-soft);
             color: var(--text);
 
@@ -258,27 +206,35 @@
             font-weight: 650;
 
             cursor: pointer;
+
             white-space: nowrap;
 
             transition:
                 background .2s ease,
                 transform .2s ease,
-                box-shadow .2s ease;
+                box-shadow .2s ease,
+                border-color .2s ease;
         }
 
         .color-button:hover {
             background: var(--accent-soft);
+
             border-color: var(--accent);
-            box-shadow: 0 0 12px var(--accent-soft);
+
+            box-shadow:
+                0 0 12px var(--accent-soft);
+
             transform: translateY(-1px);
         }
 
-        /* =========================
+
+        /* =========================================================
            HERO
-        ========================= */
+        ========================================================= */
 
         .hero {
             min-height: auto;
+
             display: flex;
             align-items: center;
 
@@ -291,18 +247,19 @@
 
             position: absolute;
 
-            width: 650px;
-            height: 650px;
+            width: 600px;
+            height: 600px;
 
-            top: -300px;
             right: -250px;
+            top: -220px;
 
-            background:
-                radial-gradient(
-                    circle,
-                    var(--accent-soft) 0%,
-                    transparent 68%
-                );
+            background: var(--accent);
+
+            opacity: .055;
+
+            filter: blur(100px);
+
+            border-radius: 50%;
 
             pointer-events: none;
         }
@@ -315,170 +272,177 @@
         }
 
         .eyebrow {
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            gap: 9px;
 
-            margin-bottom: 20px;
+            gap: 9px;
 
             color: var(--muted);
 
-            font-size: 12px;
-            font-weight: 700;
+            font-size: 13px;
+            font-weight: 600;
 
-            letter-spacing: .08em;
-            text-transform: uppercase;
+            margin-bottom: 20px;
         }
 
-        .eyebrow::before {
-            content: "";
-
+        .eyebrow-dot {
             width: 7px;
             height: 7px;
+
+            flex-shrink: 0;
 
             border-radius: 50%;
 
             background: var(--accent);
 
-            box-shadow: 0 0 12px var(--accent);
+            box-shadow:
+                0 0 18px var(--accent);
         }
 
         .hero h1 {
-            max-width: 1050px;
-
-            font-family: "Exo 2", sans-serif;
-
             font-size: clamp(54px, 8vw, 112px);
+
             line-height: .86;
 
             letter-spacing: -6px;
-            font-weight: 800;
+
+            max-width: 1050px;
         }
 
         .hero h1 .accent {
             color: var(--accent);
+
+            transition: color .3s ease;
         }
 
         .hero-description {
-            max-width: 640px;
+            max-width: 620px;
 
             margin-top: 28px;
 
-            color: var(--muted);
+            font-size: clamp(17px, 1.8vw, 21px);
 
-            font-size: 16px;
-            line-height: 1.7;
+            line-height: 1.45;
+
+            color: var(--muted);
         }
 
         .hero-bottom {
+            margin-top: 28px;
+
             display: flex;
             align-items: center;
 
-            margin-top: 28px;
+            gap: 18px;
+
+            flex-wrap: wrap;
         }
 
-        .hero-cta {
+        .primary-button {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+
+            gap: 10px;
+
+            background: var(--text);
+            color: #000;
 
             padding: 12px 18px;
 
-            background: var(--accent);
-            color: #080808;
+            border-radius: 8px;
 
-            border-radius: 7px;
-
-            font-size: 13px;
-            font-weight: 800;
+            font-weight: 700;
+            font-size: 14px;
 
             transition:
                 transform .2s ease,
-                box-shadow .2s ease;
+                background .2s ease;
         }
 
-        .hero-cta:hover {
+        .primary-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px var(--accent-soft);
+
+            background: var(--accent);
         }
 
-        /* =========================
+
+        /* =========================================================
            SECTIONS
-        ========================= */
+        ========================================================= */
 
         section {
-            padding: 100px 0;
-
             border-top: 1px solid var(--border);
+
+            padding: 110px 0;
         }
 
-        .section-heading {
-            display: grid;
-            grid-template-columns: 220px 1fr;
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
 
-            gap: 50px;
+            gap: 30px;
 
-            margin-bottom: 55px;
+            margin-bottom: 45px;
         }
 
         .section-label {
             color: var(--accent);
 
-            font-size: 11px;
-            font-weight: 800;
+            font-size: 12px;
+            font-weight: 750;
 
-            letter-spacing: .13em;
             text-transform: uppercase;
+            letter-spacing: 2px;
+
+            margin-bottom: 12px;
         }
 
         .section-title {
-            font-family: "Exo 2", sans-serif;
+            font-size: clamp(34px, 5vw, 58px);
 
-            font-size: clamp(40px, 6vw, 72px);
-            line-height: .95;
+            line-height: 1;
 
             letter-spacing: -3px;
-
-            font-weight: 800;
         }
 
         .section-description {
-            max-width: 600px;
-
-            margin-top: 22px;
+            max-width: 430px;
 
             color: var(--muted);
 
-            font-size: 15px;
-            line-height: 1.7;
+            font-size: 16px;
         }
 
-        /* =========================
+
+        /* =========================================================
            PROJECTS
-        ========================= */
+        ========================================================= */
 
         .projects-grid {
             display: grid;
 
             grid-template-columns: repeat(2, 1fr);
 
-            gap: 14px;
+            gap: 18px;
         }
 
-        .project-card {
+        .project {
             position: relative;
 
             min-height: 330px;
 
-            padding: 28px;
-
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
+
+            padding: 32px;
 
             background: var(--surface);
 
             border: 1px solid var(--border);
-            border-radius: 12px;
+
+            border-radius: 18px;
 
             overflow: hidden;
 
@@ -488,7 +452,7 @@
                 background .25s ease;
         }
 
-        .project-card::after {
+        .project::after {
             content: "";
 
             position: absolute;
@@ -496,144 +460,122 @@
             width: 180px;
             height: 180px;
 
-            right: -90px;
-            bottom: -90px;
+            right: -100px;
+            bottom: -100px;
 
             border-radius: 50%;
 
-            background: var(--accent-soft);
+            background: var(--accent);
 
             opacity: 0;
+
+            filter: blur(50px);
 
             transition: opacity .3s ease;
         }
 
-        .project-card:hover {
-            transform: translateY(-4px);
+        .project:hover {
+            transform: translateY(-5px);
 
-            border-color: var(--accent-medium);
+            border-color: var(--accent);
 
             background: var(--surface-2);
         }
 
-        .project-card:hover::after {
-            opacity: 1;
+        .project:hover::after {
+            opacity: .10;
         }
 
         .project-top {
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: start;
 
-            gap: 20px;
+            gap: 15px;
         }
 
         .project-number {
-            color: var(--muted);
-
-            font-family: "Exo 2", sans-serif;
+            color: #555;
 
             font-size: 12px;
             font-weight: 700;
         }
 
-        .project-status {
-            display: inline-flex;
-            align-items: center;
-
-            gap: 7px;
-
-            color: var(--muted);
-
+        .status {
             font-size: 10px;
-            font-weight: 700;
+            font-weight: 800;
 
             text-transform: uppercase;
-            letter-spacing: .07em;
-        }
+            letter-spacing: 1px;
 
-        .project-status::before {
-            content: "";
+            padding: 6px 9px;
 
-            width: 6px;
-            height: 6px;
+            border: 1px solid var(--border);
 
-            border-radius: 50%;
-
-            background: var(--accent);
-        }
-
-        .project-title {
-            margin-top: 40px;
-
-            font-family: "Exo 2", sans-serif;
-
-            font-size: 27px;
-            line-height: 1.05;
-
-            letter-spacing: -1px;
-
-            font-weight: 800;
-        }
-
-        .project-description {
-            max-width: 600px;
-
-            margin-top: 15px;
+            border-radius: 999px;
 
             color: var(--muted);
-
-            font-size: 13px;
-            line-height: 1.7;
         }
 
-        .project-bottom {
-            margin-top: auto;
-            padding-top: 30px;
+        .status.live {
+            color: var(--accent);
+
+            border-color: var(--accent);
+
+            background: var(--accent-soft);
+        }
+
+        .project h3 {
+            font-size: clamp(25px, 3vw, 34px);
+
+            letter-spacing: -1.5px;
+
+            margin-bottom: 13px;
+        }
+
+        .project h3 .accent {
+            color: var(--accent);
+        }
+
+        .project p {
+            color: var(--muted);
+
+            max-width: 650px;
+
+            font-size: 15px;
+        }
+
+        .project-footer {
+            margin-top: 30px;
 
             display: flex;
-            align-items: flex-end;
             justify-content: space-between;
+            align-items: end;
 
             gap: 20px;
         }
 
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
+        .tags {
+            color: #666;
 
-            gap: 6px;
-        }
-
-        .project-tag {
-            padding: 5px 8px;
-
-            border: 1px solid var(--border);
-            border-radius: 5px;
-
-            color: var(--muted);
-
-            font-size: 9px;
-            font-weight: 700;
-
-            text-transform: uppercase;
-            letter-spacing: .04em;
+            font-size: 12px;
         }
 
         .project-link {
-            flex-shrink: 0;
-
-            color: var(--accent);
-
-            font-size: 11px;
-            font-weight: 800;
+            font-size: 13px;
+            font-weight: 700;
 
             white-space: nowrap;
         }
 
-        /* =========================
+        .project-link:hover {
+            color: var(--accent);
+        }
+
+
+        /* =========================================================
            DEVELOPMENT
-        ========================= */
+        ========================================================= */
 
         .development-list {
             border-top: 1px solid var(--border);
@@ -642,76 +584,79 @@
         .development-item {
             display: grid;
 
-            grid-template-columns:
-                70px
-                180px
-                1fr
-                auto;
+            grid-template-columns: 80px 1fr 150px;
 
-            gap: 30px;
+            gap: 25px;
 
-            align-items: center;
-
-            padding: 27px 0;
+            padding: 30px 0;
 
             border-bottom: 1px solid var(--border);
+
+            transition: padding .2s ease;
+        }
+
+        .development-item:hover {
+            padding-left: 10px;
         }
 
         .development-number {
-            color: var(--muted);
-
-            font-family: "Exo 2", sans-serif;
-
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        .development-name {
-            font-family: "Exo 2", sans-serif;
-
-            font-size: 19px;
-            line-height: 1.1;
-
-            font-weight: 800;
-        }
-
-        .development-description {
-            color: var(--muted);
+            color: #555;
 
             font-size: 13px;
-            line-height: 1.6;
+        }
+
+        .development-item h3 {
+            font-size: 24px;
+
+            letter-spacing: -1px;
+
+            margin-bottom: 7px;
+        }
+
+        .development-item p {
+            color: var(--muted);
+
+            max-width: 700px;
+
+            font-size: 15px;
         }
 
         .development-status {
+            text-align: right;
+
             color: var(--accent);
 
-            font-size: 10px;
-            font-weight: 800;
+            font-size: 11px;
+            font-weight: 750;
+
+            letter-spacing: 1px;
 
             text-transform: uppercase;
-            letter-spacing: .08em;
-
-            white-space: nowrap;
         }
 
-        /* =========================
-           STUDIO
-        ========================= */
 
-        .studio-grid {
+        /* =========================================================
+           ABOUT
+        ========================================================= */
+
+        .about-layout {
             display: grid;
 
             grid-template-columns: 1fr 1fr;
 
             gap: 80px;
+        }
 
-            align-items: center;
+        .about-big {
+            font-size: clamp(27px, 4vw, 48px);
+
+            line-height: 1.08;
+
+            letter-spacing: -2px;
         }
 
         .studio-logo {
             display: block;
-
-            margin-top: 8px;
 
             font-family: "Exo 2", sans-serif;
 
@@ -726,185 +671,103 @@
             color: var(--text);
         }
 
+        .studio-logo .code {
+            color: var(--accent);
+        }
+
         .studio-subtitle {
             display: block;
 
-            margin-top: 14px;
-
-            color: var(--muted);
-
-            font-size: 12px;
-            font-weight: 700;
-
-            text-transform: uppercase;
-            letter-spacing: .1em;
-        }
-
-        .studio-text {
-            color: var(--muted);
-
-            font-size: 16px;
-
-            line-height: 1.85;
-        }
-
-        .studio-text p + p {
-            margin-top: 22px;
-        }
-
-        /* =========================
-           ABOUT
-        ========================= */
-
-        .about-grid {
-            display: grid;
-
-            grid-template-columns: 220px 1fr;
-
-            gap: 50px;
-        }
-
-        .about-content {
-            max-width: 800px;
-        }
-
-        .about-name {
-            font-family: "Exo 2", sans-serif;
-
-            font-size: clamp(38px, 5vw, 64px);
-
-            line-height: .95;
-
-            letter-spacing: -3px;
-
-            font-weight: 800;
-        }
-
-        .about-role {
-            margin-top: 15px;
+            margin-top: 18px;
 
             color: var(--accent);
 
-            font-size: 12px;
-            font-weight: 800;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            font-size: 14px;
+
+            font-weight: 650;
+
+            letter-spacing: 0.08em;
+
+            line-height: 1.2;
 
             text-transform: uppercase;
-            letter-spacing: .09em;
         }
 
         .about-text {
-            margin-top: 35px;
-
             color: var(--muted);
 
-            font-size: 16px;
+            font-size: 17px;
 
-            line-height: 1.85;
+            line-height: 1.75;
         }
 
-        .about-text p + p {
-            margin-top: 22px;
+        .about-text strong {
+            color: var(--text);
         }
 
-        /* =========================
+        .about-text .masca-inline .code {
+            color: var(--accent);
+        }
+
+
+        /* =========================================================
            FOOTER
-        ========================= */
+        ========================================================= */
 
         footer {
             border-top: 1px solid var(--border);
 
-            padding: 30px 0 38px;
+            padding: 45px 0;
         }
 
-        .footer-inner {
+        .footer-content {
             display: flex;
-
-            align-items: center;
             justify-content: space-between;
 
-            gap: 30px;
+            gap: 20px;
+
+            color: #666;
+
+            font-size: 13px;
         }
 
-        .footer-brand {
+        .footer-logo {
             font-family: "Exo 2", sans-serif;
 
-            font-size: 15px;
+            color: var(--text);
+
             font-weight: 800;
         }
 
-        .footer-subtitle {
-            margin-top: 5px;
-
-            color: var(--muted);
-
-            font-size: 10px;
-            font-weight: 600;
-
-            letter-spacing: .04em;
+        .footer-logo .code {
+            color: var(--accent);
         }
 
-        .footer-copy {
-            color: var(--muted);
 
-            font-size: 10px;
-        }
+        /* =========================================================
+           MOBILE
+        ========================================================= */
 
-        /* =========================
-           RESPONSIVE
-        ========================= */
+        @media (max-width: 750px) {
 
-        @media (max-width: 900px) {
+            .nav {
+                height: 68px;
+            }
 
             .nav-links {
                 display: none;
             }
 
-            .section-heading {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .development-item {
-                grid-template-columns: 50px 1fr;
-                gap: 10px 25px;
-            }
-
-            .development-description {
-                grid-column: 2;
-            }
-
-            .development-status {
-                grid-column: 2;
-            }
-
-            .studio-grid {
-                grid-template-columns: 1fr;
-                gap: 45px;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-        }
-
-        @media (max-width: 750px) {
-
-            .container {
-                width: min(100% - 32px, 1180px);
-            }
-
-            .header-inner {
-                min-height: 68px;
-                gap: 10px;
-            }
-
             .nav-right {
-                gap: 8px;
+                gap: 0;
             }
 
             .hero-content {
@@ -916,13 +779,11 @@
             }
 
             .hero h1 {
-                font-size: clamp(49px, 15vw, 80px);
                 letter-spacing: -4px;
             }
 
             .hero-description {
                 margin-top: 24px;
-                font-size: 14px;
             }
 
             .hero-bottom {
@@ -930,178 +791,106 @@
             }
 
             section {
-                padding: 75px 0;
+                padding: 80px 0;
             }
 
-            .section-title {
-                font-size: 48px;
+            .section-header {
+                display: block;
             }
 
-            .project-card {
-                min-height: 350px;
-                padding: 22px;
+            .section-description {
+                margin-top: 20px;
             }
 
-            .project-title {
-                font-size: 25px;
-                margin-top: 34px;
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project {
+                min-height: 300px;
             }
 
             .development-item {
-                grid-template-columns: 38px 1fr;
-            }
-
-            .development-description {
-                grid-column: 2;
+                grid-template-columns: 40px 1fr;
             }
 
             .development-status {
                 grid-column: 2;
+
+                text-align: left;
             }
 
-            .footer-inner {
-                align-items: flex-start;
+            .about-layout {
+                grid-template-columns: 1fr;
+
+                gap: 35px;
+            }
+
+            .studio-logo {
+                font-size: clamp(40px, 14vw, 64px);
+
+                letter-spacing: -2px;
+            }
+
+            .footer-content {
                 flex-direction: column;
-                gap: 20px;
-            }
-        }
-
-        @media (max-width: 450px) {
-
-            .logo {
-                font-size: 22px;
             }
 
-            .color-button {
-                width: 100px;
-            }
-
-            .language-button {
-                width: 54px;
-            }
-
-            .hero h1 {
-                font-size: 50px;
-                letter-spacing: -3px;
-            }
-
-            .hero-description {
-                font-size: 13px;
-            }
-
-            .project-bottom {
-                flex-direction: column;
-                align-items: flex-start;
-            }
         }
 
     </style>
+
 </head>
+
 
 <body>
 
-<!-- =====================================================
+
+<!-- =========================================================
      HEADER
-===================================================== -->
+========================================================= -->
 
 <header>
 
-    <div class="container">
+    <div class="container nav">
 
-        <div class="header-inner">
+        <a href="#" class="logo">
 
-            <a href="#" class="logo" aria-label="MASCA">
+            <span class="code">&lt;</span>MASCA<span class="code">/&gt;</span>
 
-                <span class="code">&lt;</span>MASCA<span class="code">/&gt;</span>
-
-            </a>
-
-            <div class="nav-right">
-
-                <nav class="nav-links">
-
-                    <a href="#projects" data-i18n="nav.projects">
-                        Progetti
-                    </a>
-
-                    <a href="#development" data-i18n="nav.development">
-                        In sviluppo
-                    </a>
-
-                    <a href="#studio" data-i18n="nav.studio">
-                        Lo studio
-                    </a>
-
-                    <a href="#about" data-i18n="nav.about">
-                        Chi sono
-                    </a>
-
-                </nav>
+        </a>
 
 
-                <!-- LANGUAGE -->
+        <div class="nav-right">
 
-                <div class="language-wrap" id="languageWrap">
+            <nav class="nav-links">
 
-                    <button
-                        class="language-button"
-                        id="languageButton"
-                        type="button"
-                        aria-expanded="false"
-                        aria-haspopup="true"
-                    >
-                        IT ▾
-                    </button>
+                <a href="#progetti">
+                    Progetti
+                </a>
 
-                    <div class="language-menu" id="languageMenu">
+                <a href="#sviluppo">
+                    In sviluppo
+                </a>
 
-                        <button
-                            type="button"
-                            data-lang="it"
-                            class="active"
-                        >
-                            Italiano
-                        </button>
+                <a href="#studio">
+                    Lo studio
+                </a>
 
-                        <button
-                            type="button"
-                            data-lang="en"
-                        >
-                            English
-                        </button>
+                <a href="#chi-sono">
+                    Chi sono
+                </a>
 
-                        <button
-                            type="button"
-                            data-lang="fr"
-                        >
-                            Français
-                        </button>
-
-                        <button
-                            type="button"
-                            data-lang="es"
-                        >
-                            Español
-                        </button>
-
-                    </div>
-
-                </div>
+            </nav>
 
 
-                <!-- COLOR -->
-
-                <button
-                    class="color-button"
-                    id="colorButton"
-                    type="button"
-                >
-                    <span id="colorLabel">
-                        ● Verde lime
-                    </span>
-                </button>
-
-            </div>
+            <button
+                class="color-button"
+                id="colorButton"
+                type="button"
+            >
+                ● Color mode
+            </button>
 
         </div>
 
@@ -1110,57 +899,55 @@
 </header>
 
 
-<!-- =====================================================
-     HERO
-===================================================== -->
-
 <main>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
 
 <section class="hero">
 
-    <div class="container">
+    <div class="container hero-content">
 
-        <div class="hero-content">
+        <div class="eyebrow">
 
-            <div
-                class="eyebrow"
-                data-i18n="hero.eyebrow"
+            <span class="eyebrow-dot"></span>
+
+            Independent software studio
+
+        </div>
+
+
+        <h1>
+
+            Software.<br>
+
+            <span class="accent">
+                AI.
+            </span><br>
+
+            Prodotti digitali.
+
+        </h1>
+
+
+        <p class="hero-description">
+
+            Progetto e sviluppo software, SaaS e applicazioni
+            digitali pensate per risolvere problemi reali.
+
+        </p>
+
+
+        <div class="hero-bottom">
+
+            <a
+                href="#progetti"
+                class="primary-button"
             >
-                Studio software indipendente
-            </div>
-
-
-            <h1 data-i18n="hero.title">
-
-                Software.<br>
-
-                <span class="accent">AI.</span><br>
-
-                Prodotti digitali.
-
-            </h1>
-
-
-            <p
-                class="hero-description"
-                data-i18n="hero.description"
-            >
-                Progetto e sviluppo software, SaaS e applicazioni digitali
-                pensate per risolvere problemi reali.
-            </p>
-
-
-            <div class="hero-bottom">
-
-                <a
-                    href="#projects"
-                    class="hero-cta"
-                    data-i18n="hero.cta"
-                >
-                    Scopri i progetti →
-                </a>
-
-            </div>
+                Scopri i progetti →
+            </a>
 
         </div>
 
@@ -1169,40 +956,36 @@
 </section>
 
 
-<!-- =====================================================
-     PROJECTS
-===================================================== -->
 
-<section id="projects">
+<!-- =========================================================
+     PROJECTS
+========================================================= -->
+
+<section id="progetti">
 
     <div class="container">
 
-        <div class="section-heading">
-
-            <div
-                class="section-label"
-                data-i18n="projects.label"
-            >
-                Progetti
-            </div>
+        <div class="section-header">
 
             <div>
 
-                <h2
-                    class="section-title"
-                    data-i18n="projects.title"
-                >
+                <div class="section-label">
+                    Progetti
+                </div>
+
+                <h2 class="section-title">
                     Costruisco cose.
                 </h2>
 
-                <p
-                    class="section-description"
-                    data-i18n="projects.description"
-                >
-                    Una selezione dei software e dei prodotti digitali sviluppati.
-                </p>
-
             </div>
+
+
+            <p class="section-description">
+
+                Una selezione dei software e dei prodotti digitali
+                sviluppati.
+
+            </p>
 
         </div>
 
@@ -1210,80 +993,55 @@
         <div class="projects-grid">
 
 
-            <!-- 01 -->
+            <!-- PROJECT 01 -->
 
-            <article class="project-card">
+            <article class="project">
 
-                <div class="project-top">
+                <div>
 
-                    <span class="project-number">
-                        01
-                    </span>
+                    <div class="project-top">
 
-                    <span
-                        class="project-status"
-                        data-i18n="status.online"
-                    >
-                        Online
-                    </span>
-
-                </div>
-
-
-                <h3 class="project-title">
-                    StudiMedici.online
-                </h3>
-
-
-                <p
-                    class="project-description"
-                    data-i18n="project.01.description"
-                >
-                    Un unico software SaaS per gestire e pubblicare siti web
-                    professionali dedicati al mondo sanitario. Il sistema
-                    permette di gestire siti per medici, fisioterapisti e
-                    specialisti attraverso una piattaforma centralizzata.
-                </p>
-
-
-                <div class="project-bottom">
-
-                    <div class="project-tags">
-
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.saas"
-                        >
-                            SaaS
+                        <span class="project-number">
+                            01
                         </span>
 
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.healthcare"
-                        >
-                            Sanità
-                        </span>
-
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.web"
-                        >
-                            Web
-                        </span>
-
-                        <span class="project-tag">
-                            2026
+                        <span class="status live">
+                            Online
                         </span>
 
                     </div>
 
 
+                    <h3>
+                        StudiMedici<span class="accent">.online</span>
+                    </h3>
+
+
+                    <p>
+
+                        Un unico software SaaS per gestire e pubblicare
+                        siti web professionali dedicati al mondo sanitario.
+                        Il sistema permette di gestire siti per medici,
+                        fisioterapisti e specialisti attraverso una
+                        piattaforma centralizzata.
+
+                    </p>
+
+                </div>
+
+
+                <div class="project-footer">
+
+                    <span class="tags">
+                        SaaS · Healthcare · Web · 2026
+                    </span>
+
+
                     <a
                         href="https://studimedici.online"
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noopener"
                         class="project-link"
-                        data-i18n="project.01.link"
                     >
                         studimedici.online →
                     </a>
@@ -1293,82 +1051,55 @@
             </article>
 
 
-            <!-- 02 -->
 
-            <article class="project-card">
+            <!-- PROJECT 02 -->
 
-                <div class="project-top">
+            <article class="project">
 
-                    <span class="project-number">
-                        02
-                    </span>
+                <div>
 
-                    <span
-                        class="project-status"
-                        data-i18n="status.online"
-                    >
-                        Online
-                    </span>
+                    <div class="project-top">
 
-                </div>
-
-
-                <h3
-                    class="project-title"
-                    data-i18n="project.02.title"
-                >
-                    Turni Medici
-                </h3>
-
-
-                <p
-                    class="project-description"
-                    data-i18n="project.02.description"
-                >
-                    Una piattaforma che ho sviluppato per organizzare turni,
-                    disponibilità e attività dei medici, rendendo più semplice
-                    la gestione del lavoro sul territorio.
-                </p>
-
-
-                <div class="project-bottom">
-
-                    <div class="project-tags">
-
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.saas"
-                        >
-                            SaaS
+                        <span class="project-number">
+                            02
                         </span>
 
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.healthcare"
-                        >
-                            Sanità
-                        </span>
-
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.scheduling"
-                        >
-                            Pianificazione
-                        </span>
-
-                        <span class="project-tag">
-                            2026
+                        <span class="status live">
+                            Online
                         </span>
 
                     </div>
 
 
+                    <h3>
+                        Turni Medici
+                    </h3>
+
+
+                    <p>
+
+                        Una piattaforma che ho sviluppato per organizzare
+                        turni, disponibilità e attività dei medici,
+                        rendendo più semplice la gestione del lavoro
+                        sul territorio.
+
+                    </p>
+
+                </div>
+
+
+                <div class="project-footer">
+
+                    <span class="tags">
+                        SaaS · Healthcare · Scheduling · 2026
+                    </span>
+
+
                     <a
                         href="https://turnimediciterritorio.it/"
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noopener"
                         class="project-link"
-                        data-i18n="project.02.link"
                     >
                         Visita il progetto →
                     </a>
@@ -1378,83 +1109,56 @@
             </article>
 
 
-            <!-- 03 -->
 
-            <article class="project-card">
+            <!-- PROJECT 03 -->
 
-                <div class="project-top">
+            <article class="project">
 
-                    <span class="project-number">
-                        03
-                    </span>
+                <div>
 
-                    <span
-                        class="project-status"
-                        data-i18n="status.online"
-                    >
-                        Online
-                    </span>
+                    <div class="project-top">
 
-                </div>
-
-
-                <h3
-                    class="project-title"
-                    data-i18n="project.03.title"
-                >
-                    Dottor Clown Vicenza
-                </h3>
-
-
-                <p
-                    class="project-description"
-                    data-i18n="project.03.description"
-                >
-                    Sito web istituzionale che ho realizzato per l'associazione
-                    Dottor Clown Vicenza, per raccontarne le attività e
-                    facilitarne la presenza digitale e la gestione di volontari,
-                    corsi ed eventi.
-                </p>
-
-
-                <div class="project-bottom">
-
-                    <div class="project-tags">
-
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.web"
-                        >
-                            Web
+                        <span class="project-number">
+                            03
                         </span>
 
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.nonprofit"
-                        >
-                            Non profit
-                        </span>
-
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.design"
-                        >
-                            Design
-                        </span>
-
-                        <span class="project-tag">
-                            2021
+                        <span class="status live">
+                            Online
                         </span>
 
                     </div>
 
 
+                    <h3>
+                        Dottor Clown Vicenza
+                    </h3>
+
+
+                    <p>
+
+                        Sito web istituzionale che ho realizzato per
+                        l'associazione Dottor Clown Vicenza, per
+                        raccontarne le attività e facilitarne la
+                        presenza digitale e la gestione di volontari,
+                        corsi ed eventi.
+
+                    </p>
+
+                </div>
+
+
+                <div class="project-footer">
+
+                    <span class="tags">
+                        Web · Non-profit · Design · 2021
+                    </span>
+
+
                     <a
                         href="https://www.dottorclownvicenza.org/"
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noopener"
                         class="project-link"
-                        data-i18n="project.03.link"
                     >
                         Visita il sito →
                     </a>
@@ -1464,315 +1168,204 @@
             </article>
 
 
-            <!-- 04 -->
 
-            <article class="project-card">
+            <!-- PROJECT 04 -->
 
-                <div class="project-top">
+            <article class="project">
 
-                    <span class="project-number">
-                        04
-                    </span>
+                <div>
 
-                    <span
-                        class="project-status"
-                        data-i18n="status.software"
-                    >
-                        Software
-                    </span>
+                    <div class="project-top">
+
+                        <span class="project-number">
+                            04
+                        </span>
+
+                        <span class="status">
+                            Software
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        PRD
+                    </h3>
+
+
+                    <p>
+
+                        Software di controllo della produzione
+                        industriale che ho sviluppato per collegarsi
+                        ai macchinari automatici di assemblaggio,
+                        raccogliere dati di produzione ed errori
+                        e permettere analisi statistiche sui processi.
+
+                    </p>
 
                 </div>
 
 
-                <h3
-                    class="project-title"
-                    data-i18n="project.04.title"
-                >
-                    PRD
-                </h3>
+                <div class="project-footer">
 
-
-                <p
-                    class="project-description"
-                    data-i18n="project.04.description"
-                >
-                    Software di controllo della produzione industriale che ho
-                    sviluppato per collegarsi ai macchinari automatici di
-                    assemblaggio, raccogliere dati di produzione ed errori e
-                    permettere analisi statistiche sui processi.
-                </p>
-
-
-                <div class="project-bottom">
-
-                    <div class="project-tags">
-
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.industrial"
-                        >
-                            Industriale
-                        </span>
-
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.data"
-                        >
-                            Dati
-                        </span>
-
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.analytics"
-                        >
-                            Analisi
-                        </span>
-
-                        <span class="project-tag">
-                            2017
-                        </span>
-
-                    </div>
+                    <span class="tags">
+                        Industrial · Data · Analytics · 2017
+                    </span>
 
                 </div>
 
             </article>
 
 
-            <!-- 05 -->
 
-            <article class="project-card">
+            <!-- PROJECT 05 -->
 
-                <div class="project-top">
+            <article class="project">
 
-                    <span class="project-number">
-                        05
-                    </span>
+                <div>
 
-                    <span
-                        class="project-status"
-                        data-i18n="status.software"
-                    >
-                        Software
-                    </span>
+                    <div class="project-top">
+
+                        <span class="project-number">
+                            05
+                        </span>
+
+                        <span class="status">
+                            Software
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        Deep Learning · Anatomia Patologica
+                    </h3>
+
+
+                    <p>
+
+                        Software basato su Deep Learning per l'analisi
+                        automatizzata di campioni di anatomia patologica
+                        della prostata. Il sistema identifica stroma
+                        ed epitelio e conta i macrofagi in relazione
+                        al tipo di tessuto, permettendo di analizzarne
+                        la distribuzione e studiarne la relazione
+                        all'interno del campione.
+
+                    </p>
 
                 </div>
 
 
-                <h3
-                    class="project-title"
-                    data-i18n="project.05.title"
-                >
-                    Deep Learning · Anatomia Patologica
-                </h3>
+                <div class="project-footer">
 
-
-                <p
-                    class="project-description"
-                    data-i18n="project.05.description"
-                >
-                    Software basato su Deep Learning per l'analisi automatizzata
-                    di campioni di anatomia patologica della prostata. Il sistema
-                    identifica stroma ed epitelio e conta i macrofagi in relazione
-                    al tipo di tessuto, permettendo di analizzarne la distribuzione
-                    e studiarne la relazione all'interno del campione.
-                </p>
-
-
-                <div class="project-bottom">
-
-                    <div class="project-tags">
-
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.ai"
-                        >
-                            AI
-                        </span>
-
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.deeplearning"
-                        >
-                            Deep Learning
-                        </span>
-
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.medicalimaging"
-                        >
-                            Imaging medico
-                        </span>
-
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.research"
-                        >
-                            Ricerca
-                        </span>
-
-                        <span class="project-tag">
-                            2025
-                        </span>
-
-                    </div>
+                    <span class="tags">
+                        AI · Deep Learning · Medical Imaging · Research · 2025
+                    </span>
 
                 </div>
 
             </article>
 
 
-            <!-- 06 -->
 
-            <article class="project-card">
+            <!-- PROJECT 06 -->
 
-                <div class="project-top">
+            <article class="project">
 
-                    <span class="project-number">
-                        06
-                    </span>
+                <div>
 
-                    <span
-                        class="project-status"
-                        data-i18n="status.soon"
-                    >
-                        Presto online
-                    </span>
+                    <div class="project-top">
+
+                        <span class="project-number">
+                            06
+                        </span>
+
+                        <span class="status">
+                            Presto online
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        Mecco
+                    </h3>
+
+
+                    <p>
+
+                        Applicazione pensata per piccoli meccanici
+                        e attività indipendenti. Permette di gestire
+                        le lavorazioni dei veicoli, monitorare costi
+                        e guadagni e generare un riepilogo del lavoro
+                        da consegnare al cliente.
+
+                    </p>
 
                 </div>
 
 
-                <h3
-                    class="project-title"
-                    data-i18n="project.06.title"
-                >
-                    Mecco
-                </h3>
+                <div class="project-footer">
 
-
-                <p
-                    class="project-description"
-                    data-i18n="project.06.description"
-                >
-                    Applicazione pensata per piccoli meccanici e attività
-                    indipendenti. Permette di gestire le lavorazioni dei veicoli,
-                    monitorare costi e guadagni e generare un riepilogo del
-                    lavoro da consegnare al cliente.
-                </p>
-
-
-                <div class="project-bottom">
-
-                    <div class="project-tags">
-
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.webapp"
-                        >
-                            Applicazione web
-                        </span>
-
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.automotive"
-                        >
-                            Automotive
-                        </span>
-
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.business"
-                        >
-                            Attività
-                        </span>
-
-                        <span class="project-tag">
-                            2026
-                        </span>
-
-                    </div>
+                    <span class="tags">
+                        Web App · Automotive · Business · 2026
+                    </span>
 
                 </div>
 
             </article>
 
 
-            <!-- 07 -->
 
-            <article class="project-card">
+            <!-- PROJECT 07 -->
 
-                <div class="project-top">
+            <article class="project">
 
-                    <span class="project-number">
-                        07
-                    </span>
+                <div>
 
-                    <span
-                        class="project-status"
-                        data-i18n="status.online"
-                    >
-                        Online
-                    </span>
+                    <div class="project-top">
+
+                        <span class="project-number">
+                            07
+                        </span>
+
+                        <span class="status live">
+                            Online
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        AI Impact Meter
+                    </h3>
+
+
+                    <p>
+
+                        Estensione per Google Chrome che permette
+                        di monitorare l'impatto dell'intelligenza
+                        artificiale durante la navigazione e
+                        l'utilizzo quotidiano del browser.
+
+                    </p>
 
                 </div>
 
 
-                <h3
-                    class="project-title"
-                    data-i18n="project.07.title"
-                >
-                    AI Impact Meter
-                </h3>
+                <div class="project-footer">
 
-
-                <p
-                    class="project-description"
-                    data-i18n="project.07.description"
-                >
-                    Estensione per Google Chrome che permette di monitorare
-                    l'impatto dell'intelligenza artificiale durante la navigazione
-                    e l'utilizzo quotidiano del browser.
-                </p>
-
-
-                <div class="project-bottom">
-
-                    <div class="project-tags">
-
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.ai"
-                        >
-                            AI
-                        </span>
-
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.chrome"
-                        >
-                            Estensione Chrome
-                        </span>
-
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.productivity"
-                        >
-                            Produttività
-                        </span>
-
-                        <span class="project-tag">
-                            2026
-                        </span>
-
-                    </div>
+                    <span class="tags">
+                        AI · Chrome Extension · Productivity · 2026
+                    </span>
 
 
                     <a
                         href="https://chromewebstore.google.com/detail/ai-impact-meter/lpjpcagblfjejcajdjamminmoeknmfcd"
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noopener"
                         class="project-link"
-                        data-i18n="project.07.link"
                     >
                         Chrome Web Store →
                     </a>
@@ -1782,78 +1375,55 @@
             </article>
 
 
-            <!-- 08 -->
 
-            <article class="project-card">
+            <!-- PROJECT 08 -->
 
-                <div class="project-top">
+            <article class="project">
 
-                    <span class="project-number">
-                        08
-                    </span>
+                <div>
 
-                    <span
-                        class="project-status"
-                        data-i18n="status.online"
-                    >
-                        Online
-                    </span>
+                    <div class="project-top">
 
-                </div>
-
-
-                <h3
-                    class="project-title"
-                    data-i18n="project.08.title"
-                >
-                    Template Notion
-                </h3>
-
-
-                <p
-                    class="project-description"
-                    data-i18n="project.08.description"
-                >
-                    Una raccolta di template e strumenti per Notion progettati
-                    per organizzare attività, informazioni e flussi di lavoro
-                    in modo semplice e strutturato.
-                </p>
-
-
-                <div class="project-bottom">
-
-                    <div class="project-tags">
-
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.notion"
-                        >
-                            Notion
+                        <span class="project-number">
+                            08
                         </span>
 
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.productivity"
-                        >
-                            Produttività
-                        </span>
-
-                        <span
-                            class="project-tag"
-                            data-i18n="tag.digitalproducts"
-                        >
-                            Prodotti digitali
+                        <span class="status live">
+                            Online
                         </span>
 
                     </div>
 
 
+                    <h3>
+                        Template Notion
+                    </h3>
+
+
+                    <p>
+
+                        Una raccolta di template e strumenti per
+                        Notion progettati per organizzare attività,
+                        informazioni e flussi di lavoro in modo
+                        semplice e strutturato.
+
+                    </p>
+
+                </div>
+
+
+                <div class="project-footer">
+
+                    <span class="tags">
+                        Notion · Productivity · Digital Products
+                    </span>
+
+
                     <a
                         href="https://www.notion.com/@massimo"
                         target="_blank"
-                        rel="noopener noreferrer"
+                        rel="noopener"
                         class="project-link"
-                        data-i18n="project.08.link"
                     >
                         Visita il profilo →
                     </a>
@@ -1862,6 +1432,7 @@
 
             </article>
 
+
         </div>
 
     </div>
@@ -1869,42 +1440,37 @@
 </section>
 
 
-<!-- =====================================================
-     DEVELOPMENT
-===================================================== -->
 
-<section id="development">
+<!-- =========================================================
+     DEVELOPMENT
+========================================================= -->
+
+<section id="sviluppo">
 
     <div class="container">
 
-        <div class="section-heading">
-
-            <div
-                class="section-label"
-                data-i18n="development.label"
-            >
-                In sviluppo
-            </div>
+        <div class="section-header">
 
             <div>
 
-                <h2
-                    class="section-title"
-                    data-i18n="development.title"
-                >
+                <div class="section-label">
+                    In sviluppo
+                </div>
+
+                <h2 class="section-title">
                     I prossimi<br>
                     prodotti.
                 </h2>
 
-                <p
-                    class="section-description"
-                    data-i18n="development.description"
-                >
-                    Nuovi strumenti che sto sviluppando insieme alle persone
-                    che li utilizzeranno ogni giorno.
-                </p>
-
             </div>
+
+
+            <p class="section-description">
+
+                Nuovi strumenti che sto sviluppando insieme alle
+                persone che li utilizzeranno ogni giorno.
+
+            </p>
 
         </div>
 
@@ -1916,106 +1482,110 @@
 
             <div class="development-item">
 
-                <span class="development-number">
+                <div class="development-number">
                     01
-                </span>
+                </div>
 
-                <h3
-                    class="development-name"
-                    data-i18n="development.01.title"
-                >
-                    Assistente per la pratica clinica
-                </h3>
 
-                <p
-                    class="development-description"
-                    data-i18n="development.01.description"
-                >
-                    Un software per medici di medicina generale che sto
-                    sviluppando per migliorare la qualità delle ricette e
-                    delle richieste dei pazienti, in collaborazione con
-                    specialisti degli ospedali di Milano.
-                </p>
+                <div>
 
-                <span
-                    class="development-status"
-                    data-i18n="status.development"
-                >
+                    <h3>
+                        Assistente per la pratica clinica
+                    </h3>
+
+                    <p>
+
+                        Un software per medici di medicina generale
+                        che sto sviluppando per migliorare la qualità
+                        delle ricette e delle richieste dei pazienti,
+                        in collaborazione con specialisti degli
+                        ospedali di Milano.
+
+                    </p>
+
+                </div>
+
+
+                <div class="development-status">
                     In sviluppo
-                </span>
+                </div>
 
             </div>
+
 
 
             <!-- 02 -->
 
             <div class="development-item">
 
-                <span class="development-number">
+                <div class="development-number">
                     02
-                </span>
+                </div>
 
-                <h3
-                    class="development-name"
-                    data-i18n="development.02.title"
-                >
-                    Gestionale per MMG
-                </h3>
 
-                <p
-                    class="development-description"
-                    data-i18n="development.02.description"
-                >
-                    Un gestionale che sto sviluppando insieme a medici di
-                    medicina generale, progettato per rendere più comodo
-                    il lavoro quotidiano, ridurre la parte burocratica e
-                    lasciare più tempo alla parte clinica.
-                </p>
+                <div>
 
-                <span
-                    class="development-status"
-                    data-i18n="status.development"
-                >
+                    <h3>
+                        Gestionale per MMG
+                    </h3>
+
+                    <p>
+
+                        Un gestionale che sto sviluppando insieme
+                        a medici di medicina generale, progettato
+                        per rendere più comodo il lavoro quotidiano,
+                        ridurre la parte burocratica e lasciare
+                        più tempo alla parte clinica.
+
+                    </p>
+
+                </div>
+
+
+                <div class="development-status">
                     In sviluppo
-                </span>
+                </div>
 
             </div>
+
 
 
             <!-- 03 -->
 
             <div class="development-item">
 
-                <span class="development-number">
+                <div class="development-number">
                     03
-                </span>
+                </div>
 
-                <h3
-                    class="development-name"
-                    data-i18n="development.03.title"
-                >
-                    Rookie
-                </h3>
 
-                <p
-                    class="development-description"
-                    data-i18n="development.03.description"
-                >
-                    Una web app che sto sviluppando per il football americano.
-                    Attraverso lezioni, esercizi e percorsi specifici per ruolo,
-                    permette ad appassionati e giocatori di imparare le basi
-                    del football, migliorare le proprie conoscenze e sviluppare
-                    la capacità di leggere il gioco.
-                </p>
+                <div>
 
-                <span
-                    class="development-status"
-                    data-i18n="status.development"
-                >
+                    <h3>
+                        Rookie
+                    </h3>
+
+                    <p>
+
+                        Una web app che sto sviluppando per il
+                        football americano. Attraverso lezioni,
+                        esercizi e percorsi specifici per ruolo,
+                        permette ad appassionati e giocatori di
+                        imparare le basi del football, migliorare
+                        le proprie conoscenze e sviluppare la
+                        capacità di leggere il gioco.
+
+                    </p>
+
+                </div>
+
+
+                <div class="development-status">
                     In sviluppo
-                </span>
+                </div>
 
             </div>
+
 
         </div>
 
@@ -2024,24 +1594,24 @@
 </section>
 
 
-<!-- =====================================================
-     STUDIO
-===================================================== -->
+
+<!-- =========================================================
+     ABOUT / STUDIO
+========================================================= -->
 
 <section id="studio">
 
     <div class="container">
 
-        <div class="studio-grid">
+        <div class="section-label">
+            Lo studio
+        </div>
 
-            <div>
 
-                <div
-                    class="section-label"
-                    data-i18n="studio.label"
-                >
-                    Lo studio
-                </div>
+        <div class="about-layout">
+
+
+            <div class="about-big">
 
                 <div class="studio-logo">
 
@@ -2049,34 +1619,36 @@
 
                 </div>
 
-                <span
-                    class="studio-subtitle"
-                    data-i18n="studio.subtitle"
-                >
-                    Studio software indipendente
+
+                <span class="studio-subtitle">
+                    Independent software studio
                 </span>
 
             </div>
 
 
-            <div class="studio-text">
+            <p class="about-text">
 
-                <p data-i18n="studio.text.01">
-                    &lt;MASCA/&gt; è il mio studio indipendente attraverso cui
-                    progetto e sviluppo software, SaaS e prodotti digitali.
-                </p>
+                <span class="masca-inline">
+                    <span class="code">&lt;</span>MASCA<span class="code">/&gt;</span>
+                </span>
 
-                <p data-i18n="studio.text.02">
-                    Mi concentro soprattutto su problemi concreti: sanità,
-                    organizzazione del lavoro, industria, automazione e formazione.
-                </p>
+                è il mio studio indipendente attraverso cui progetto
+                e sviluppo software, SaaS e prodotti digitali.
 
-                <p data-i18n="studio.text.03">
-                    Dall'idea al prodotto, sviluppo strumenti semplici da usare
-                    e costruiti per essere realmente utilizzati.
-                </p>
+                <br><br>
 
-            </div>
+                Mi concentro soprattutto su problemi concreti:
+                sanità, organizzazione del lavoro, industria,
+                automazione e formazione.
+
+                <br><br>
+
+                Dall'idea al prodotto, sviluppo strumenti
+                semplici da usare e costruiti per essere
+                realmente utilizzati.
+
+            </p>
 
         </div>
 
@@ -2085,65 +1657,65 @@
 </section>
 
 
-<!-- =====================================================
-     ABOUT
-===================================================== -->
 
-<section id="about">
+<!-- =========================================================
+     CHI SONO
+========================================================= -->
+
+<section id="chi-sono">
 
     <div class="container">
 
-        <div class="about-grid">
-
-            <div
-                class="section-label"
-                data-i18n="about.label"
-            >
-                Chi sono
-            </div>
+        <div class="section-label">
+            Chi sono
+        </div>
 
 
-            <div class="about-content">
+        <div class="about-layout">
 
-                <h2
-                    class="about-name"
-                    data-i18n="about.name"
-                >
+
+            <div>
+
+                <h2 class="section-title">
                     Massimo Scacco
                 </h2>
 
 
-                <div
-                    class="about-role"
-                    data-i18n="about.role"
-                >
+                <p style="
+                    margin-top: 18px;
+                    color: var(--accent);
+                    font-size: 15px;
+                    font-weight: 650;
+                ">
                     Fondatore · Medico · Ingegnere
-                </div>
-
-
-                <div class="about-text">
-
-                    <p data-i18n="about.text.01">
-                        Sono Massimo Scacco, medico di medicina generale e
-                        laureato in ingegneria della produzione industriale.
-                    </p>
-
-                    <p data-i18n="about.text.02">
-                        Mi occupo personalmente dello sviluppo dei prodotti,
-                        dalla progettazione all'implementazione, con un interesse
-                        particolare per software, intelligenza artificiale,
-                        automazione e strumenti digitali.
-                    </p>
-
-                    <p data-i18n="about.text.03">
-                        &lt;MASCA/&gt; nasce dall'idea che la tecnologia abbia
-                        valore quando riesce a rendere un lavoro più semplice,
-                        più efficiente o semplicemente possibile.
-                    </p>
-
-                </div>
+                </p>
 
             </div>
+
+
+            <p class="about-text">
+
+                Sono Massimo Scacco, medico di medicina generale
+                e laureato in ingegneria della produzione industriale.
+
+                <br><br>
+
+                Mi occupo personalmente dello sviluppo dei prodotti,
+                dalla progettazione all'implementazione, con un
+                interesse particolare per software, intelligenza
+                artificiale, automazione e strumenti digitali.
+
+                <br><br>
+
+                <span class="masca-inline">
+                    <span class="code">&lt;</span>MASCA<span class="code">/&gt;</span>
+                </span>
+
+                nasce dall'idea che la tecnologia abbia valore
+                quando riesce a rendere un lavoro più semplice,
+                più efficiente o semplicemente possibile.
+
+            </p>
 
         </div>
 
@@ -2151,1723 +1723,204 @@
 
 </section>
 
+
 </main>
 
 
-<!-- =====================================================
+
+<!-- =========================================================
      FOOTER
-===================================================== -->
+========================================================= -->
 
 <footer>
 
-    <div class="container">
-
-        <div class="footer-inner">
-
-            <div>
-
-                <div class="footer-brand">
-
-                    <span class="code">&lt;</span>MASCA<span class="code">/&gt;</span>
-
-                </div>
-
-                <div
-                    class="footer-subtitle"
-                    data-i18n="footer.subtitle"
-                >
-                    Software · AI · Prodotti digitali
-                </div>
-
-            </div>
+    <div class="container footer-content">
 
 
-            <div
-                class="footer-copy"
-                data-i18n="footer.copy"
-            >
-                © 2026 &lt;MASCA/&gt;
-            </div>
+        <div>
+
+            <span class="footer-logo">
+
+                <span class="code">&lt;</span>MASCA<span class="code">/&gt;</span>
+
+            </span>
+
+            <br>
+
+            Software · AI · Digital Products
 
         </div>
+
+
+        <div>
+
+            © 2026
+
+            <span class="masca-inline">
+
+                <span class="code">&lt;</span>MASCA<span class="code">/&gt;</span>
+
+            </span>
+
+        </div>
+
 
     </div>
 
 </footer>
 
 
+
+<!-- =========================================================
+     COLOR MODE
+========================================================= -->
+
 <script>
 
-/* =====================================================
-   TRANSLATIONS
-===================================================== */
+    const colors = [
 
-const translations = {
+        "#c8ff00",
+        "#00d9ff",
+        "#ff7a00",
+        "#b76cff",
+        "#ff4f9a",
+        "#4d8dff",
+        "#ff4d4d",
+        "#ffe14d",
+        "#35d07f",
+        "#ff4fd8"
 
-    /* =================================================
-       ITALIANO
-    ================================================= */
+    ];
 
-    it: {
 
-        pageTitle:
-            "MASCA — Software, AI & Prodotti digitali",
+    const colorNames = [
 
-        pageDescription:
-            "MASCA — Software, SaaS, intelligenza artificiale e prodotti digitali sviluppati da Massimo Scacco.",
+        "Lime",
+        "Cyan",
+        "Orange",
+        "Purple",
+        "Pink",
+        "Blue",
+        "Red",
+        "Yellow",
+        "Green",
+        "Magenta"
 
-        colorMode:
-            "● {color}",
+    ];
 
-        colors: {
-            Lime: "Verde lime",
-            Cyan: "Ciano",
-            Orange: "Arancione",
-            Purple: "Viola",
-            Pink: "Rosa",
-            Blue: "Blu",
-            Red: "Rosso",
-            Yellow: "Giallo",
-            Green: "Verde",
-            Magenta: "Magenta"
-        },
 
-        nav: {
-            projects: "Progetti",
-            development: "In sviluppo",
-            studio: "Lo studio",
-            about: "Chi sono"
-        },
+    let currentColor = 0;
 
-        hero: {
-            eyebrow: "Studio software indipendente",
 
-            title:
-                "Software.<br><span class=\"accent\">AI.</span><br>Prodotti digitali.",
+    const button =
+        document.getElementById("colorButton");
 
-            description:
-                "Progetto e sviluppo software, SaaS e applicazioni digitali pensate per risolvere problemi reali.",
 
-            cta:
-                "Scopri i progetti →"
-        },
+    const savedColor =
+        localStorage.getItem("mascaColor");
 
-        projects: {
-            label: "Progetti",
-            title: "Costruisco cose.",
-            description:
-                "Una selezione dei software e dei prodotti digitali sviluppati."
-        },
 
-        status: {
-            online: "Online",
-            software: "Software",
-            soon: "Presto online",
-            development: "In sviluppo"
-        },
+    if (savedColor !== null) {
 
-        tag: {
-            saas: "SaaS",
-            healthcare: "Sanità",
-            web: "Web",
-            scheduling: "Pianificazione",
-            nonprofit: "Non profit",
-            design: "Design",
-            industrial: "Industriale",
-            data: "Dati",
-            analytics: "Analisi",
-            ai: "AI",
-            deeplearning: "Deep Learning",
-            medicalimaging: "Imaging medico",
-            research: "Ricerca",
-            webapp: "Applicazione web",
-            automotive: "Automotive",
-            business: "Attività",
-            chrome: "Estensione Chrome",
-            productivity: "Produttività",
-            notion: "Notion",
-            digitalproducts: "Prodotti digitali"
-        },
-
-        project: {
-
-            "01": {
-                description:
-                    "Un unico software SaaS per gestire e pubblicare siti web professionali dedicati al mondo sanitario. Il sistema permette di gestire siti per medici, fisioterapisti e specialisti attraverso una piattaforma centralizzata.",
-                link:
-                    "studimedici.online →"
-            },
-
-            "02": {
-                title:
-                    "Turni Medici",
-                description:
-                    "Una piattaforma che ho sviluppato per organizzare turni, disponibilità e attività dei medici, rendendo più semplice la gestione del lavoro sul territorio.",
-                link:
-                    "Visita il progetto →"
-            },
-
-            "03": {
-                title:
-                    "Dottor Clown Vicenza",
-                description:
-                    "Sito web istituzionale che ho realizzato per l'associazione Dottor Clown Vicenza, per raccontarne le attività e facilitarne la presenza digitale e la gestione di volontari, corsi ed eventi.",
-                link:
-                    "Visita il sito →"
-            },
-
-            "04": {
-                title:
-                    "PRD",
-                description:
-                    "Software di controllo della produzione industriale che ho sviluppato per collegarsi ai macchinari automatici di assemblaggio, raccogliere dati di produzione ed errori e permettere analisi statistiche sui processi."
-            },
-
-            "05": {
-                title:
-                    "Deep Learning · Anatomia Patologica",
-                description:
-                    "Software basato su Deep Learning per l'analisi automatizzata di campioni di anatomia patologica della prostata. Il sistema identifica stroma ed epitelio e conta i macrofagi in relazione al tipo di tessuto, permettendo di analizzarne la distribuzione e studiarne la relazione all'interno del campione."
-            },
-
-            "06": {
-                title:
-                    "Mecco",
-                description:
-                    "Applicazione pensata per piccoli meccanici e attività indipendenti. Permette di gestire le lavorazioni dei veicoli, monitorare costi e guadagni e generare un riepilogo del lavoro da consegnare al cliente."
-            },
-
-            "07": {
-                title:
-                    "AI Impact Meter",
-                description:
-                    "Estensione per Google Chrome che permette di monitorare l'impatto dell'intelligenza artificiale durante la navigazione e l'utilizzo quotidiano del browser.",
-                link:
-                    "Chrome Web Store →"
-            },
-
-            "08": {
-                title:
-                    "Template Notion",
-                description:
-                    "Una raccolta di template e strumenti per Notion progettati per organizzare attività, informazioni e flussi di lavoro in modo semplice e strutturato.",
-                link:
-                    "Visita il profilo →"
-            }
-        },
-
-        development: {
-
-            label:
-                "In sviluppo",
-
-            title:
-                "I prossimi<br>prodotti.",
-
-            description:
-                "Nuovi strumenti che sto sviluppando insieme alle persone che li utilizzeranno ogni giorno.",
-
-            "01": {
-                title:
-                    "Assistente per la pratica clinica",
-                description:
-                    "Un software per medici di medicina generale che sto sviluppando per migliorare la qualità delle ricette e delle richieste dei pazienti, in collaborazione con specialisti degli ospedali di Milano."
-            },
-
-            "02": {
-                title:
-                    "Gestionale per MMG",
-                description:
-                    "Un gestionale che sto sviluppando insieme a medici di medicina generale, progettato per rendere più comodo il lavoro quotidiano, ridurre la parte burocratica e lasciare più tempo alla parte clinica."
-            },
-
-            "03": {
-                title:
-                    "Rookie",
-                description:
-                    "Una web app che sto sviluppando per il football americano. Attraverso lezioni, esercizi e percorsi specifici per ruolo, permette ad appassionati e giocatori di imparare le basi del football, migliorare le proprie conoscenze e sviluppare la capacità di leggere il gioco."
-            }
-        },
-
-        studio: {
-
-            label:
-                "Lo studio",
-
-            subtitle:
-                "Studio software indipendente",
-
-            "text.01":
-                "&lt;MASCA/&gt; è il mio studio indipendente attraverso cui progetto e sviluppo software, SaaS e prodotti digitali.",
-
-            "text.02":
-                "Mi concentro soprattutto su problemi concreti: sanità, organizzazione del lavoro, industria, automazione e formazione.",
-
-            "text.03":
-                "Dall'idea al prodotto, sviluppo strumenti semplici da usare e costruiti per essere realmente utilizzati."
-        },
-
-        about: {
-
-            label:
-                "Chi sono",
-
-            name:
-                "Massimo Scacco",
-
-            role:
-                "Fondatore · Medico · Ingegnere",
-
-            "text.01":
-                "Sono Massimo Scacco, medico di medicina generale e laureato in ingegneria della produzione industriale.",
-
-            "text.02":
-                "Mi occupo personalmente dello sviluppo dei prodotti, dalla progettazione all'implementazione, con un interesse particolare per software, intelligenza artificiale, automazione e strumenti digitali.",
-
-            "text.03":
-                "&lt;MASCA/&gt; nasce dall'idea che la tecnologia abbia valore quando riesce a rendere un lavoro più semplice, più efficiente o semplicemente possibile."
-        },
-
-        footer: {
-
-            subtitle:
-                "Software · AI · Prodotti digitali",
-
-            copy:
-                "© 2026 &lt;MASCA/&gt;"
-        }
-    },
-
-
-    /* =================================================
-       ENGLISH
-    ================================================= */
-
-    en: {
-
-        pageTitle:
-            "MASCA — Software, AI & Digital Products",
-
-        pageDescription:
-            "MASCA — Software, SaaS, artificial intelligence and digital products developed by Massimo Scacco.",
-
-        colorMode:
-            "● {color}",
-
-        colors: {
-            Lime: "Lime",
-            Cyan: "Cyan",
-            Orange: "Orange",
-            Purple: "Purple",
-            Pink: "Pink",
-            Blue: "Blue",
-            Red: "Red",
-            Yellow: "Yellow",
-            Green: "Green",
-            Magenta: "Magenta"
-        },
-
-        nav: {
-            projects: "Projects",
-            development: "In development",
-            studio: "Studio",
-            about: "About"
-        },
-
-        hero: {
-
-            eyebrow:
-                "Independent software studio",
-
-            title:
-                "Software.<br><span class=\"accent\">AI.</span><br>Digital products.",
-
-            description:
-                "I design and develop software, SaaS and digital applications built to solve real problems.",
-
-            cta:
-                "Explore projects →"
-        },
-
-        projects: {
-
-            label:
-                "Projects",
-
-            title:
-                "I build things.",
-
-            description:
-                "A selection of software and digital products I have developed."
-        },
-
-        status: {
-
-            online:
-                "Online",
-
-            software:
-                "Software",
-
-            soon:
-                "Coming soon",
-
-            development:
-                "In development"
-        },
-
-        tag: {
-
-            saas:
-                "SaaS",
-
-            healthcare:
-                "Healthcare",
-
-            web:
-                "Web",
-
-            scheduling:
-                "Scheduling",
-
-            nonprofit:
-                "Non-profit",
-
-            design:
-                "Design",
-
-            industrial:
-                "Industrial",
-
-            data:
-                "Data",
-
-            analytics:
-                "Analytics",
-
-            ai:
-                "AI",
-
-            deeplearning:
-                "Deep Learning",
-
-            medicalimaging:
-                "Medical imaging",
-
-            research:
-                "Research",
-
-            webapp:
-                "Web app",
-
-            automotive:
-                "Automotive",
-
-            business:
-                "Business",
-
-            chrome:
-                "Chrome extension",
-
-            productivity:
-                "Productivity",
-
-            notion:
-                "Notion",
-
-            digitalproducts:
-                "Digital products"
-        },
-
-        project: {
-
-            "01": {
-
-                description:
-                    "A single SaaS platform for managing and publishing professional websites dedicated to healthcare. The system allows doctors, physiotherapists and specialists to manage their websites through a centralized platform.",
-
-                link:
-                    "studimedici.online →"
-            },
-
-            "02": {
-
-                title:
-                    "Turni Medici",
-
-                description:
-                    "A platform I developed to organize doctors' shifts, availability and activities, making it easier to manage work across the local healthcare network.",
-
-                link:
-                    "Visit project →"
-            },
-
-            "03": {
-
-                title:
-                    "Dottor Clown Vicenza",
-
-                description:
-                    "An institutional website I created for Dottor Clown Vicenza, helping the organization communicate its activities and manage its digital presence, volunteers, courses and events.",
-
-                link:
-                    "Visit website →"
-            },
-
-            "04": {
-
-                title:
-                    "PRD",
-
-                description:
-                    "Industrial production control software developed to connect with automated assembly machines, collect production and error data, and enable statistical analysis of manufacturing processes."
-            },
-
-            "05": {
-
-                title:
-                    "Deep Learning · Pathology",
-
-                description:
-                    "Deep Learning software for automated analysis of prostate pathology samples. The system identifies stroma and epithelium and counts macrophages in relation to tissue type, making it possible to analyze their distribution and study their relationship within the sample."
-            },
-
-            "06": {
-
-                title:
-                    "Mecco",
-
-                description:
-                    "An application designed for small independent mechanics and workshops. It allows them to manage vehicle jobs, monitor costs and earnings, and generate a work summary to provide to customers."
-            },
-
-            "07": {
-
-                title:
-                    "AI Impact Meter",
-
-                description:
-                    "A Google Chrome extension that allows users to monitor the impact of artificial intelligence during browsing and everyday browser use.",
-
-                link:
-                    "Chrome Web Store →"
-            },
-
-            "08": {
-
-                title:
-                    "Notion Templates",
-
-                description:
-                    "A collection of Notion templates and tools designed to organize tasks, information and workflows in a simple and structured way.",
-
-                link:
-                    "Visit profile →"
-            }
-        },
-
-        development: {
-
-            label:
-                "In development",
-
-            title:
-                "The next<br>products.",
-
-            description:
-                "New tools I am developing together with the people who will use them every day.",
-
-            "01": {
-
-                title:
-                    "Clinical Practice Assistant",
-
-                description:
-                    "Software for general practitioners that I am developing to improve the quality of prescriptions and patient requests, in collaboration with specialists from hospitals in Milan."
-            },
-
-            "02": {
-
-                title:
-                    "GP Practice Management",
-
-                description:
-                    "A practice management system I am developing together with general practitioners, designed to make everyday work easier, reduce bureaucracy and leave more time for clinical care."
-            },
-
-            "03": {
-
-                title:
-                    "Rookie",
-
-                description:
-                    "A web app I am developing for American football. Through lessons, exercises and role-specific learning paths, it helps fans and players learn the fundamentals of football, improve their knowledge and develop their ability to read the game."
-            }
-        },
-
-        studio: {
-
-            label:
-                "The studio",
-
-            subtitle:
-                "Independent software studio",
-
-            "text.01":
-                "&lt;MASCA/&gt; is my independent studio through which I design and develop software, SaaS and digital products.",
-
-            "text.02":
-                "I focus primarily on concrete problems: healthcare, work organization, industry, automation and education.",
-
-            "text.03":
-                "From idea to product, I build tools that are simple to use and designed to be genuinely useful."
-        },
-
-        about: {
-
-            label:
-                "About",
-
-            name:
-                "Massimo Scacco",
-
-            role:
-                "Founder · Doctor · Engineer",
-
-            "text.01":
-                "I am Massimo Scacco, a general practitioner with a degree in industrial production engineering.",
-
-            "text.02":
-                "I personally handle product development, from design to implementation, with a particular interest in software, artificial intelligence, automation and digital tools.",
-
-            "text.03":
-                "&lt;MASCA/&gt; was born from the idea that technology has value when it can make work simpler, more efficient or simply possible."
-        },
-
-        footer: {
-
-            subtitle:
-                "Software · AI · Digital products",
-
-            copy:
-                "© 2026 &lt;MASCA/&gt;"
-        }
-    },
-
-
-    /* =================================================
-       FRANÇAIS
-    ================================================= */
-
-    fr: {
-
-        pageTitle:
-            "MASCA — Logiciels, IA & Produits numériques",
-
-        pageDescription:
-            "MASCA — Logiciels, SaaS, intelligence artificielle et produits numériques développés par Massimo Scacco.",
-
-        colorMode:
-            "● {color}",
-
-        colors: {
-
-            Lime:
-                "Vert citron",
-
-            Cyan:
-                "Cyan",
-
-            Orange:
-                "Orange",
-
-            Purple:
-                "Violet",
-
-            Pink:
-                "Rose",
-
-            Blue:
-                "Bleu",
-
-            Red:
-                "Rouge",
-
-            Yellow:
-                "Jaune",
-
-            Green:
-                "Vert",
-
-            Magenta:
-                "Magenta"
-        },
-
-        nav: {
-
-            projects:
-                "Projets",
-
-            development:
-                "En développement",
-
-            studio:
-                "Le studio",
-
-            about:
-                "À propos"
-        },
-
-        hero: {
-
-            eyebrow:
-                "Studio logiciel indépendant",
-
-            title:
-                "Logiciels.<br><span class=\"accent\">IA.</span><br>Produits numériques.",
-
-            description:
-                "Je conçois et développe des logiciels, des SaaS et des applications numériques destinés à résoudre des problèmes réels.",
-
-            cta:
-                "Découvrir les projets →"
-        },
-
-        projects: {
-
-            label:
-                "Projets",
-
-            title:
-                "Je construis des choses.",
-
-            description:
-                "Une sélection des logiciels et produits numériques que j'ai développés."
-        },
-
-        status: {
-
-            online:
-                "En ligne",
-
-            software:
-                "Logiciel",
-
-            soon:
-                "Bientôt disponible",
-
-            development:
-                "En développement"
-        },
-
-        tag: {
-
-            saas:
-                "SaaS",
-
-            healthcare:
-                "Santé",
-
-            web:
-                "Web",
-
-            scheduling:
-                "Planification",
-
-            nonprofit:
-                "Association",
-
-            design:
-                "Design",
-
-            industrial:
-                "Industriel",
-
-            data:
-                "Données",
-
-            analytics:
-                "Analyse",
-
-            ai:
-                "IA",
-
-            deeplearning:
-                "Deep Learning",
-
-            medicalimaging:
-                "Imagerie médicale",
-
-            research:
-                "Recherche",
-
-            webapp:
-                "Application web",
-
-            automotive:
-                "Automobile",
-
-            business:
-                "Entreprise",
-
-            chrome:
-                "Extension Chrome",
-
-            productivity:
-                "Productivité",
-
-            notion:
-                "Notion",
-
-            digitalproducts:
-                "Produits numériques"
-        },
-
-        project: {
-
-            "01": {
-
-                description:
-                    "Une plateforme SaaS unique pour gérer et publier des sites web professionnels dédiés au secteur de la santé. Le système permet aux médecins, physiothérapeutes et spécialistes de gérer leurs sites depuis une plateforme centralisée.",
-
-                link:
-                    "studimedici.online →"
-            },
-
-            "02": {
-
-                title:
-                    "Turni Medici",
-
-                description:
-                    "Une plateforme que j'ai développée pour organiser les gardes, disponibilités et activités des médecins, afin de simplifier la gestion du travail sur le territoire.",
-
-                link:
-                    "Voir le projet →"
-            },
-
-            "03": {
-
-                title:
-                    "Dottor Clown Vicenza",
-
-                description:
-                    "Un site institutionnel que j'ai réalisé pour l'association Dottor Clown Vicenza afin de présenter ses activités et de faciliter sa présence numérique ainsi que la gestion des bénévoles, formations et événements.",
-
-                link:
-                    "Voir le site →"
-            },
-
-            "04": {
-
-                title:
-                    "PRD",
-
-                description:
-                    "Logiciel de contrôle de production industrielle développé pour se connecter aux machines automatiques d'assemblage, collecter les données de production et les erreurs, et permettre des analyses statistiques des processus."
-            },
-
-            "05": {
-
-                title:
-                    "Deep Learning · Anatomopathologie",
-
-                description:
-                    "Logiciel basé sur le Deep Learning pour l'analyse automatisée d'échantillons d'anatomopathologie de la prostate. Le système identifie le stroma et l'épithélium et compte les macrophages en fonction du type de tissu, permettant d'analyser leur distribution et leur relation au sein de l'échantillon."
-            },
-
-            "06": {
-
-                title:
-                    "Mecco",
-
-                description:
-                    "Une application destinée aux petits mécaniciens et aux ateliers indépendants. Elle permet de gérer les interventions sur les véhicules, de suivre les coûts et les revenus et de générer un résumé du travail à remettre au client."
-            },
-
-            "07": {
-
-                title:
-                    "AI Impact Meter",
-
-                description:
-                    "Une extension Google Chrome qui permet de suivre l'impact de l'intelligence artificielle pendant la navigation et l'utilisation quotidienne du navigateur.",
-
-                link:
-                    "Chrome Web Store →"
-            },
-
-            "08": {
-
-                title:
-                    "Modèles Notion",
-
-                description:
-                    "Une collection de modèles et d'outils Notion conçus pour organiser les tâches, les informations et les flux de travail de manière simple et structurée.",
-
-                link:
-                    "Voir le profil →"
-            }
-        },
-
-        development: {
-
-            label:
-                "En développement",
-
-            title:
-                "Les prochains<br>produits.",
-
-            description:
-                "De nouveaux outils que je développe avec les personnes qui les utiliseront au quotidien.",
-
-            "01": {
-
-                title:
-                    "Assistant pour la pratique clinique",
-
-                description:
-                    "Un logiciel destiné aux médecins généralistes que je développe pour améliorer la qualité des prescriptions et des demandes des patients, en collaboration avec des spécialistes des hôpitaux de Milan."
-            },
-
-            "02": {
-
-                title:
-                    "Gestion de cabinet médical",
-
-                description:
-                    "Un logiciel de gestion que je développe avec des médecins généralistes, conçu pour simplifier le travail quotidien, réduire la bureaucratie et laisser davantage de temps aux soins."
-            },
-
-            "03": {
-
-                title:
-                    "Rookie",
-
-                description:
-                    "Une application web que je développe pour le football américain. Grâce à des leçons, des exercices et des parcours spécifiques à chaque poste, elle permet aux passionnés et aux joueurs d'apprendre les bases du football, d'améliorer leurs connaissances et de développer leur capacité à lire le jeu."
-            }
-        },
-
-        studio: {
-
-            label:
-                "Le studio",
-
-            subtitle:
-                "Studio logiciel indépendant",
-
-            "text.01":
-                "&lt;MASCA/&gt; est mon studio indépendant à travers lequel je conçois et développe des logiciels, des SaaS et des produits numériques.",
-
-            "text.02":
-                "Je me concentre principalement sur des problèmes concrets : santé, organisation du travail, industrie, automatisation et formation.",
-
-            "text.03":
-                "De l'idée au produit, je développe des outils simples à utiliser et conçus pour être réellement utilisés."
-        },
-
-        about: {
-
-            label:
-                "À propos",
-
-            name:
-                "Massimo Scacco",
-
-            role:
-                "Fondateur · Médecin · Ingénieur",
-
-            "text.01":
-                "Je suis Massimo Scacco, médecin généraliste et diplômé en ingénierie de la production industrielle.",
-
-            "text.02":
-                "Je m'occupe personnellement du développement des produits, de la conception à la mise en œuvre, avec un intérêt particulier pour les logiciels, l'intelligence artificielle, l'automatisation et les outils numériques.",
-
-            "text.03":
-                "&lt;MASCA/&gt; est né de l'idée que la technologie a de la valeur lorsqu'elle permet de rendre le travail plus simple, plus efficace ou tout simplement possible."
-        },
-
-        footer: {
-
-            subtitle:
-                "Logiciels · IA · Produits numériques",
-
-            copy:
-                "© 2026 &lt;MASCA/&gt;"
-        }
-    },
-
-
-    /* =================================================
-       ESPAÑOL
-    ================================================= */
-
-    es: {
-
-        pageTitle:
-            "MASCA — Software, IA & Productos digitales",
-
-        pageDescription:
-            "MASCA — Software, SaaS, inteligencia artificial y productos digitales desarrollados por Massimo Scacco.",
-
-        colorMode:
-            "● {color}",
-
-        colors: {
-
-            Lime:
-                "Verde lima",
-
-            Cyan:
-                "Cian",
-
-            Orange:
-                "Naranja",
-
-            Purple:
-                "Morado",
-
-            Pink:
-                "Rosa",
-
-            Blue:
-                "Azul",
-
-            Red:
-                "Rojo",
-
-            Yellow:
-                "Amarillo",
-
-            Green:
-                "Verde",
-
-            Magenta:
-                "Magenta"
-        },
-
-        nav: {
-
-            projects:
-                "Proyectos",
-
-            development:
-                "En desarrollo",
-
-            studio:
-                "El estudio",
-
-            about:
-                "Sobre mí"
-        },
-
-        hero: {
-
-            eyebrow:
-                "Estudio de software independiente",
-
-            title:
-                "Software.<br><span class=\"accent\">IA.</span><br>Productos digitales.",
-
-            description:
-                "Diseño y desarrollo software, SaaS y aplicaciones digitales pensadas para resolver problemas reales.",
-
-            cta:
-                "Descubrir proyectos →"
-        },
-
-        projects: {
-
-            label:
-                "Proyectos",
-
-            title:
-                "Construyo cosas.",
-
-            description:
-                "Una selección de los programas y productos digitales que he desarrollado."
-        },
-
-        status: {
-
-            online:
-                "Online",
-
-            software:
-                "Software",
-
-            soon:
-                "Próximamente",
-
-            development:
-                "En desarrollo"
-        },
-
-        tag: {
-
-            saas:
-                "SaaS",
-
-            healthcare:
-                "Salud",
-
-            web:
-                "Web",
-
-            scheduling:
-                "Planificación",
-
-            nonprofit:
-                "Sin ánimo de lucro",
-
-            design:
-                "Diseño",
-
-            industrial:
-                "Industrial",
-
-            data:
-                "Datos",
-
-            analytics:
-                "Análisis",
-
-            ai:
-                "IA",
-
-            deeplearning:
-                "Deep Learning",
-
-            medicalimaging:
-                "Imagen médica",
-
-            research:
-                "Investigación",
-
-            webapp:
-                "Aplicación web",
-
-            automotive:
-                "Automoción",
-
-            business:
-                "Negocios",
-
-            chrome:
-                "Extensión de Chrome",
-
-            productivity:
-                "Productividad",
-
-            notion:
-                "Notion",
-
-            digitalproducts:
-                "Productos digitales"
-        },
-
-        project: {
-
-            "01": {
-
-                description:
-                    "Una única plataforma SaaS para gestionar y publicar sitios web profesionales dedicados al sector sanitario. El sistema permite gestionar sitios para médicos, fisioterapeutas y especialistas desde una plataforma centralizada.",
-
-                link:
-                    "studimedici.online →"
-            },
-
-            "02": {
-
-                title:
-                    "Turni Medici",
-
-                description:
-                    "Una plataforma que desarrollé para organizar turnos, disponibilidad y actividades de los médicos, facilitando la gestión del trabajo en el territorio.",
-
-                link:
-                    "Visitar proyecto →"
-            },
-
-            "03": {
-
-                title:
-                    "Dottor Clown Vicenza",
-
-                description:
-                    "Sitio web institucional que desarrollé para la asociación Dottor Clown Vicenza, para presentar sus actividades y facilitar su presencia digital y la gestión de voluntarios, cursos y eventos.",
-
-                link:
-                    "Visitar sitio →"
-            },
-
-            "04": {
-
-                title:
-                    "PRD",
-
-                description:
-                    "Software de control de producción industrial desarrollado para conectarse a máquinas automáticas de ensamblaje, recopilar datos de producción y errores y permitir análisis estadísticos de los procesos."
-            },
-
-            "05": {
-
-                title:
-                    "Deep Learning · Anatomía Patológica",
-
-                description:
-                    "Software basado en Deep Learning para el análisis automatizado de muestras de anatomía patológica de próstata. El sistema identifica estroma y epitelio y cuenta los macrófagos en relación con el tipo de tejido, permitiendo analizar su distribución y estudiar su relación dentro de la muestra."
-            },
-
-            "06": {
-
-                title:
-                    "Mecco",
-
-                description:
-                    "Una aplicación pensada para pequeños mecánicos y talleres independientes. Permite gestionar los trabajos de los vehículos, controlar costes e ingresos y generar un resumen del trabajo para entregar al cliente."
-            },
-
-            "07": {
-
-                title:
-                    "AI Impact Meter",
-
-                description:
-                    "Una extensión para Google Chrome que permite monitorizar el impacto de la inteligencia artificial durante la navegación y el uso diario del navegador.",
-
-                link:
-                    "Chrome Web Store →"
-            },
-
-            "08": {
-
-                title:
-                    "Plantillas de Notion",
-
-                description:
-                    "Una colección de plantillas y herramientas para Notion diseñadas para organizar tareas, información y flujos de trabajo de forma sencilla y estructurada.",
-
-                link:
-                    "Visitar perfil →"
-            }
-        },
-
-        development: {
-
-            label:
-                "En desarrollo",
-
-            title:
-                "Los próximos<br>productos.",
-
-            description:
-                "Nuevas herramientas que estoy desarrollando junto con las personas que las utilizarán cada día.",
-
-            "01": {
-
-                title:
-                    "Asistente para la práctica clínica",
-
-                description:
-                    "Un software para médicos de atención primaria que estoy desarrollando para mejorar la calidad de las recetas y solicitudes de los pacientes, en colaboración con especialistas de hospitales de Milán."
-            },
-
-            "02": {
-
-                title:
-                    "Gestión para médicos de familia",
-
-                description:
-                    "Un sistema de gestión que estoy desarrollando junto con médicos de atención primaria, diseñado para facilitar el trabajo diario, reducir la burocracia y dejar más tiempo para la atención clínica."
-            },
-
-            "03": {
-
-                title:
-                    "Rookie",
-
-                description:
-                    "Una aplicación web que estoy desarrollando para el fútbol americano. Mediante lecciones, ejercicios y recorridos específicos por posición, permite a aficionados y jugadores aprender las bases del fútbol, mejorar sus conocimientos y desarrollar su capacidad para leer el juego."
-            }
-        },
-
-        studio: {
-
-            label:
-                "El estudio",
-
-            subtitle:
-                "Estudio de software independiente",
-
-            "text.01":
-                "&lt;MASCA/&gt; es mi estudio independiente desde el que diseño y desarrollo software, SaaS y productos digitales.",
-
-            "text.02":
-                "Me centro principalmente en problemas concretos: salud, organización del trabajo, industria, automatización y formación.",
-
-            "text.03":
-                "Desde la idea hasta el producto, desarrollo herramientas sencillas de usar y creadas para ser realmente utilizadas."
-        },
-
-        about: {
-
-            label:
-                "Sobre mí",
-
-            name:
-                "Massimo Scacco",
-
-            role:
-                "Fundador · Médico · Ingeniero",
-
-            "text.01":
-                "Soy Massimo Scacco, médico de atención primaria y graduado en ingeniería de producción industrial.",
-
-            "text.02":
-                "Me ocupo personalmente del desarrollo de los productos, desde el diseño hasta la implementación, con especial interés por el software, la inteligencia artificial, la automatización y las herramientas digitales.",
-
-            "text.03":
-                "&lt;MASCA/&gt; nace de la idea de que la tecnología tiene valor cuando consigue hacer que un trabajo sea más sencillo, más eficiente o simplemente posible."
-        },
-
-        footer: {
-
-            subtitle:
-                "Software · IA · Productos digitales",
-
-            copy:
-                "© 2026 &lt;MASCA/&gt;"
-        }
-    }
-
-};
-
-
-/* =====================================================
-   LANGUAGE SYSTEM
-===================================================== */
-
-const languageWrap =
-    document.getElementById("languageWrap");
-
-const languageButton =
-    document.getElementById("languageButton");
-
-const languageOptions =
-    document.querySelectorAll("[data-lang]");
-
-
-const languageCodes = {
-
-    it: "IT",
-    en: "EN",
-    fr: "FR",
-    es: "ES"
-
-};
-
-
-function getValue(object, path) {
-
-    return path
-        .split(".")
-        .reduce(
-            (current, key) =>
-                current?.[key],
-            object
-        );
-}
-
-
-function translatePage(language) {
-
-    if (!translations[language]) {
-        language = "it";
-    }
-
-    const dictionary =
-        translations[language];
-
-
-    /* HTML language */
-
-    document.documentElement.lang =
-        language;
-
-
-    /* TITLE */
-
-    document.title =
-        dictionary.pageTitle;
-
-
-    /* META DESCRIPTION */
-
-    const meta =
-        document.querySelector(
-            'meta[name="description"]'
-        );
-
-    if (meta) {
-
-        meta.setAttribute(
-            "content",
-            dictionary.pageDescription
-        );
-
-    }
-
-
-    /* TEXTS */
-
-    document
-        .querySelectorAll("[data-i18n]")
-        .forEach(element => {
-
-            const key =
-                element.dataset.i18n;
-
-            const value =
-                getValue(
-                    dictionary,
-                    key
-                );
-
-            if (
-                value !== undefined &&
-                value !== null
-            ) {
-
-                element.innerHTML =
-                    value;
-
-            }
-
-        });
-
-
-    /* LANGUAGE BUTTON */
-
-    languageButton.textContent =
-        languageCodes[language] + " ▾";
-
-
-    /* ACTIVE LANGUAGE */
-
-    languageOptions.forEach(option => {
-
-        option.classList.toggle(
-            "active",
-            option.dataset.lang === language
-        );
-
-    });
-
-
-    /* COLOR */
-
-    updateColorLabel(language);
-
-
-    /* SAVE */
-
-    localStorage.setItem(
-        "mascaLanguage",
-        language
-    );
-
-}
-
-
-/* OPEN LANGUAGE MENU */
-
-languageButton.addEventListener(
-    "click",
-    event => {
-
-        event.stopPropagation();
-
-        const open =
-            languageWrap.classList.toggle(
-                "open"
-            );
-
-        languageButton.setAttribute(
-            "aria-expanded",
-            open ? "true" : "false"
-        );
-
-    }
-);
-
-
-/* SELECT LANGUAGE */
-
-languageOptions.forEach(option => {
-
-    option.addEventListener(
-        "click",
-        () => {
-
-            translatePage(
-                option.dataset.lang
-            );
-
-            languageWrap.classList.remove(
-                "open"
-            );
-
-            languageButton.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-
-        }
-    );
-
-});
-
-
-/* CLICK OUTSIDE */
-
-document.addEventListener(
-    "click",
-    event => {
+        currentColor =
+            parseInt(savedColor);
 
         if (
-            !languageWrap.contains(
-                event.target
-            )
+            isNaN(currentColor) ||
+            currentColor < 0 ||
+            currentColor >= colors.length
         ) {
 
-            languageWrap.classList.remove(
-                "open"
-            );
-
-            languageButton.setAttribute(
-                "aria-expanded",
-                "false"
-            );
+            currentColor = 0;
 
         }
 
     }
-);
 
 
-/* ESC */
+    function hexToRgba(hex, alpha) {
 
-document.addEventListener(
-    "keydown",
-    event => {
+        const r =
+            parseInt(hex.substring(1, 3), 16);
 
-        if (event.key === "Escape") {
+        const g =
+            parseInt(hex.substring(3, 5), 16);
 
-            languageWrap.classList.remove(
-                "open"
-            );
+        const b =
+            parseInt(hex.substring(5, 7), 16);
 
-            languageButton.setAttribute(
-                "aria-expanded",
-                "false"
-            );
 
-        }
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 
     }
-);
 
 
-/* =====================================================
-   COLOR MODE
-===================================================== */
+    function applyColor() {
 
-const colors = [
-
-    "#c8ff00",
-    "#00d9ff",
-    "#ff7a00",
-    "#b76cff",
-    "#ff4f9a",
-    "#4d8dff",
-    "#ff4d4d",
-    "#ffe14d",
-    "#35d07f",
-    "#ff4fd8"
-
-];
+        const color =
+            colors[currentColor];
 
 
-const colorNames = [
-
-    "Lime",
-    "Cyan",
-    "Orange",
-    "Purple",
-    "Pink",
-    "Blue",
-    "Red",
-    "Yellow",
-    "Green",
-    "Magenta"
-
-];
-
-
-let colorIndex =
-    parseInt(
-        localStorage.getItem(
-            "mascaColorIndex"
-        ),
-        10
-    );
-
-
-if (
-    Number.isNaN(colorIndex) ||
-    colorIndex < 0 ||
-    colorIndex >= colors.length
-) {
-
-    colorIndex = 0;
-
-}
-
-
-function updateColorLabel(language) {
-
-    const dictionary =
-        translations[language] ||
-        translations.it;
-
-    const colorName =
-        colorNames[colorIndex];
-
-    const translatedColor =
-        dictionary.colors[colorName] ||
-        colorName;
-
-    document.getElementById(
-        "colorLabel"
-    ).textContent =
-        dictionary.colorMode.replace(
-            "{color}",
-            translatedColor
-        );
-
-}
-
-
-function applyColor(index) {
-
-    colorIndex = index;
-
-    const color =
-        colors[colorIndex];
-
-
-    document.documentElement.style
-        .setProperty(
+        document.documentElement.style.setProperty(
             "--accent",
             color
         );
 
 
-    const hex =
-        color.replace("#", "");
-
-
-    const r =
-        parseInt(
-            hex.substring(0,2),
-            16
-        );
-
-    const g =
-        parseInt(
-            hex.substring(2,4),
-            16
-        );
-
-    const b =
-        parseInt(
-            hex.substring(4,6),
-            16
-        );
-
-
-    document.documentElement.style
-        .setProperty(
+        document.documentElement.style.setProperty(
             "--accent-soft",
-            `rgba(${r},${g},${b},.10)`
+            hexToRgba(color, 0.10)
         );
 
 
-    document.documentElement.style
-        .setProperty(
-            "--accent-medium",
-            `rgba(${r},${g},${b},.20)`
-        );
+        button.innerHTML =
+            "● " +
+            colorNames[currentColor];
 
 
-    document.getElementById(
-        "colorButton"
-    ).style.borderColor =
-        color;
+        /*
+           Forza il bordo del pulsante a rimanere
+           sempre del colore attivo, anche senza hover.
+        */
+
+        button.style.borderColor = color;
+
+    }
 
 
-    updateColorLabel(
-        document.documentElement.lang || "it"
-    );
-
-
-    localStorage.setItem(
-        "mascaColorIndex",
-        colorIndex
-    );
-
-}
-
-
-document
-    .getElementById("colorButton")
-    .addEventListener(
+    button.addEventListener(
         "click",
         () => {
 
-            const next =
-                (colorIndex + 1)
-                % colors.length;
+            currentColor++;
 
-            applyColor(next);
+
+            if (
+                currentColor >=
+                colors.length
+            ) {
+
+                currentColor = 0;
+
+            }
+
+
+            localStorage.setItem(
+                "mascaColor",
+                currentColor
+            );
+
+
+            applyColor();
 
         }
     );
 
 
-/* =====================================================
-   INITIALIZATION
-===================================================== */
-
-const savedLanguage =
-    localStorage.getItem(
-        "mascaLanguage"
-    );
-
-
-const initialLanguage =
-    translations[savedLanguage]
-        ? savedLanguage
-        : "it";
-
-
-applyColor(colorIndex);
-
-translatePage(initialLanguage);
+    applyColor();
 
 </script>
+
 
 </body>
 </html>
